@@ -36,7 +36,17 @@ $$TOTAL = \beta_0 + \beta_1(Reading) + \beta_2(Grammar) + \beta_3(Writing) + \be
 
 ## 📁 Estructura del Proyecto
 
-Analisis de datos con Python pandas/ ├── README.md # Documentación principal ├── requirements.txt # Dependencias del proyecto ├── scripts/ │ ├── Data Cleaning.ipynb # Limpieza y preparación │ ├── EDA.ipynb # Análisis exploratorio │ └── Analisis_profundo.ipynb # Correlación y regresión ├── data/ │ ├── dataset_ingles.csv # Dataset original │ └── dataset_cleaned.csv # Dataset procesado ├── docs/ │ ├── Data Understanding.pdf # Documentación técnica │ └── Data_Understanding_Resultados_Ingles.md # Resumen de resultados └── temp/ # Archivos temporales (no versionados)
+Analisis de datos con Python pandas/
+├── README.md
+├── requirements.txt
+├── scripts/Analisis_profundo.ipynb
+├── scripts/Data Cleaning.ipynb
+├── scripts/EDA..ipynb
+├── data/dataset_cleaned.csv
+├── data/dataset_ingles.csv
+├── docs/Data Understanding.pdf
+├── docs/Data_Understanding_Resultados_Ingles.md
+└── temp/ (datos no incluidos por privacidad)
 
 
 ## 🚀 Ejecución
@@ -46,9 +56,9 @@ bash
 pip install -r requirements.txt
 
 # Ejecutar notebooks en orden:
-# 1. Data Cleaning.ipynb
-# 2. EDA.ipynb  
-# 3. Analisis_profundo.ipynb
+ 1. Data Cleaning.ipynb
+ 2. EDA.ipynb  
+ 3. Analisis_profundo.ipynb
 
 jupyter notebook
 
