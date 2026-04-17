@@ -1,34 +1,24 @@
-# Portafolio de Análisis de Datos y Ciencia de Datos
+# 📊 Portafolio de Análisis de Datos
 
-Bienvenido a mi portafolio. Aquí recopilo proyectos aplicados de análisis estadístico, machine learning y visualización de datos, con foco en extraer insights accionables desde datos reales.
+Bienvenido/a a mi portafolio de proyectos de análisis de datos. Aquí encontrarás proyectos desarrollados en Python enfocados en análisis estadístico, visualización de datos y modelización para resolver problemas reales del ámbito educativo y empresarial.
 
-## Proyectos destacados
+## 🛠️ Stack Técnico
 
-### 📊 Análisis de correlación en rendimiento académico (inglés)
-**Tecnologías:** Python, Pandas, Seaborn, Matplotlib, Regresión lineal
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557c?style=flat&logo=python&logoColor=white)
+![Seaborn](https://img.shields.io/badge/Seaborn-3776AB?style=flat&logo=python&logoColor=white)
 
-Análisis de la influencia de habilidades parciales (Reading, Grammar, Writing, Listening, Speaking) en la nota final TOTAL. Los datos provienen de una población filtrada de estudiantes de inglés en cursos extensivos, excluyendo sesgos demográficos (99% Barcelona) y de tipo de curso.
+## 📂 Proyectos
 
-**Objetivos:**
-- Determinar qué materia tiene mayor peso predictivo sobre TOTAL.
-- Visualizar correlaciones y multicolinealidad.
-- Construcción de modelo de regresión lineal para explicar varianza.
+| Proyecto | Descripción | Tecnologías |
+|----------|-------------|-------------|
+| [📘 Análisis de Rendimiento en Exámenes de Inglés](./01_analisis_examenes_ingles/) | Correlación e influencia entre materias parciales y resultado final en cursos extensivos | Python, Pandas, Seaborn, Matplotlib, Regresión Lineal |
 
-**Resultados clave:**  
-[Pendiente de completar según tu análisis]
+## 📬 Contacto
 
-➡️ [Ver proyecto](./proyecto-analisis-ingles/README.md)
-
----
-
-## Más proyectos
-
-*Próximamente: análisis de series temporales, clustering educacional, dashboards interactivos...*
+- 💼 LinkedIn: www.linkedin.com/in/jl-asensio
+- 📧 Email: llluis@hotmail.com
 
 ---
-
-## Sobre mí
-
-Data analyst con experiencia en limpieza de datos, análisis exploratorio y modelado estadístico. Uso Python como herramienta principal.
-
-📫 Cómo contactarme: [tu email o LinkedIn]
+*Portafolio en constante actualización con nuevos proyectos de análisis de datos*
