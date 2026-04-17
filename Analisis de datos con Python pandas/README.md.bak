@@ -39,17 +39,15 @@ $$TOTAL = \beta_0 + \beta_1(Reading) + \beta_2(Grammar) + \beta_3(Writing) + \be
 Analisis de datos con Python pandas/
 ├── README.md
 ├── requirements.txt
-├── scripts/
-│   ├── Analisis_profundo.ipynb
-│   ├── Data Cleaning.ipynb
-│   └── EDA.ipynb
-├── data/
-│   ├── dataset_cleaned.csv
-│   └── dataset_ingles.csv
-├── docs/
-│   ├── Data Understanding.pdf
-│   └── Data_Understanding_Resultados_Ingles.md
+├── scripts/Analisis_profundo.ipynb
+├── scripts/Data Cleaning.ipynb
+├── scripts/EDA..ipynb
+├── data/dataset_cleaned.csv
+├── data/dataset_ingles.csv
+├── docs/Data Understanding.pdf
+├── docs/Data_Understanding_Resultados_Ingles.md
 └── temp/ (datos no incluidos por privacidad)
+
 
 ## 🚀 Ejecución
 
