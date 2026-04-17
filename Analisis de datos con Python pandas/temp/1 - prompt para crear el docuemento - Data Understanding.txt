@@ -1,0 +1,37 @@
+He usado esta select y los filtros que menciono para crear un dataset para su posterior analisis. Dame la documentación de los campos resultantes, con su descripción y los filtros aplicados apra un docuemnto de Data Understanding : SELECT:
+
+
+SELECT rp.IDALUMNE, rp.IDCURS, rp.IDEVALUACIO, rp.MATERIA, rp.RESULT, rt.TOTAL, ta.POBLACIO, ta.DATANAIXEMENT, ta.SEXO, ta.TIPUS_ESCOLA, tev.DATA, tev.DESCRIPCIO, tc.PROFE, tc.TIPOESTUDIANTS, tee.EJERCICIO_ESCOLAR, tee.INICI
+FROM ((((tbRESULTATS_PARCIALS AS rp
+INNER JOIN tbRESULTATS_TOTALS AS rt 
+    ON rp.IDALUMNE = rt.IDALUMNE 
+    AND rp.IDCURS = rt.IDCURS 
+    AND rp.IDIOMA = rt.IDIOMA 
+    AND rp.IDEVALUACIO = rt.IDEVALUACIO)
+INNER JOIN tbALUMNES AS ta 
+    ON rp.IDALUMNE = ta.IDALUMNE)
+INNER JOIN tbEVALUACIONS AS tev 
+    ON rp.IDEVALUACIO = tev.IDEVALUACIO)
+INNER JOIN tbCURSOS_2005_2006 AS tc 
+    ON rp.IDCURS = tc.IDCURS)
+INNER JOIN tbEJERCICIO_ESCOLAR AS tee 
+    ON tc.NRO_EJERCICIO = tee.NRO_EJERCICIO
+WHERE rp.IDIOMA = 3
+  AND tc.NRO_EJERCICIO BETWEEN 10 AND 20
+  AND tc.IDTIPOCURS = 1
+  AND rt.TOTAL <> 0
+  AND rp.RESULT <> 0
+
+
+FILTROS:
+
+idioma = angles
+curs escolar entre el Curs  2014-2015 i el Curs 2024-2025 ambdos inclosos
+tipu_curs = extensiu de calendari escolar
+el resultat final <> 0 ens asegurem que tenen resultats, es a dir, que han fet l'examen
+el reusltat parcial <>0 ens asegurem que han fet totes les parts de l'examen d'angles
+
+TENER EN CUENTA:
+
+ten en cuenta el un nuevo camo llaamdo rp.MATERIA que si influye en la Granularidad del dataset ya que junto al IDALUMNE,IDCURSO e IDEVALUACIO forman parte del identificador unico.
+

@@ -1,0 +1,11 @@
+seleccionar solo MATERIA=5
+quitar los 9 null de data naixament
+crar campo edad para filtrar por ello, ya que hay Edades sospechosas: 91 menores de 5 años, 0 mayores de 100.
+
+Reading, Grammar, Writing, Listening y Speaking
+
+20/4/2026 17:15 - edefici nord , carrer 3 torres 7, amb dni, dra. peramiquel
+
+21/4/2026 18:00, corachan 3, c/gironella, 2 planta, despatx 215 dr. medrano
+
+24/4/2026 10:10, amb la dra. parra, dr.roux 91

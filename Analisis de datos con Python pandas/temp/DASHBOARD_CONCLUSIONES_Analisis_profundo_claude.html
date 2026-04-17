@@ -1,0 +1,273 @@
+
+<h2 class="sr-only">Análisis de regresión lineal: impacto de cada materia sobre el TOTAL</h2>
+
+<style>
+  .sec { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 10px; }
+  .card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 16px 18px; }
+  .badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 9px; border-radius: 20px; }
+  .tab { font-size: 12px; padding: 4px 14px; border: 0.5px solid var(--color-border-secondary); background: transparent; border-radius: var(--border-radius-md); cursor: pointer; color: var(--color-text-secondary); }
+  .tab.on { background: var(--color-background-secondary); color: var(--color-text-primary); font-weight: 500; }
+  .metric { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px; }
+  .ml { font-size: 11px; color: var(--color-text-secondary); margin: 0 0 3px; }
+  .mv { font-size: 20px; font-weight: 500; color: var(--color-text-primary); margin: 0; }
+  .ms { font-size: 11px; color: var(--color-text-tertiary); margin: 2px 0 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-align: center; padding: 7px 8px; border-bottom: 0.5px solid var(--color-border-secondary); }
+  th:first-child { text-align: left; }
+  td { padding: 8px; text-align: center; border-bottom: 0.5px solid var(--color-border-tertiary); color: var(--color-text-primary); }
+  td:first-child { text-align: left; font-weight: 500; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--color-background-secondary); }
+  .chip { width: 10px; height: 10px; border-radius: 2px; display: inline-block; margin-right: 5px; vertical-align: middle; }
+</style>
+
+<div style="padding: 1rem 0;">
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 20px;">
+    <div class="metric">
+      <p class="ml">Mejor R² simple</p>
+      <p class="mv" style="color:#185FA5;">Grammar</p>
+      <p class="ms">R² = 0.6454</p>
+    </div>
+    <div class="metric">
+      <p class="ml">Mayor coeficiente</p>
+      <p class="mv" style="color:#3B6D11;">Speaking</p>
+      <p class="ms">+4.31 pts/pt</p>
+    </div>
+    <div class="metric">
+      <p class="ml">Mayor pérdida R²</p>
+      <p class="mv" style="color:#534AB7;">Reading</p>
+      <p class="ms">−12.8% sin ella</p>
+    </div>
+    <div class="metric">
+      <p class="ml">Menor impacto</p>
+      <p class="mv" style="color:#BA7517;">Speaking</p>
+      <p class="ms">−0.99% sin ella</p>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+
+    <div class="card">
+      <p class="sec">Coeficiente Beta estandarizado</p>
+      <p style="font-size: 11px; color: var(--color-text-secondary); margin: 0 0 14px;">Impacto de aumentar 1 desviación estándar en cada materia sobre el TOTAL estandarizado. Permite comparar materias en la misma escala.</p>
+      <div id="betaChart" style="position:relative; height:200px;">
+        <canvas id="betaC" role="img" aria-label="Coeficientes Beta estandarizados: Reading 0.395, Listening 0.384, Grammar 0.376, Writing 0.172, Speaking 0.115">Reading 0.395, Listening 0.384, Grammar 0.376, Writing 0.172, Speaking 0.115</canvas>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="sec">Dominance Analysis — pérdida de R² al eliminar materia</p>
+      <p style="font-size: 11px; color: var(--color-text-secondary); margin: 0 0 14px;">Cuánto baja el R² del modelo conjunto si se excluye cada materia. Mide la contribución única e irremplazable.</p>
+      <div style="position:relative; height:200px;">
+        <canvas id="domC" role="img" aria-label="Pérdida de R² sin cada materia: Reading 12.78%, Listening 11.51%, Grammar 9.20%, Writing 2.20%, Speaking 0.99%">Reading 12.78%, Listening 11.51%, Grammar 9.20%, Writing 2.20%, Speaking 0.99%</canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom: 16px;">
+    <p class="sec">Regresión simple — tabla de resultados completa</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Materia</th>
+          <th>Coeficiente</th>
+          <th>IC 95% inferior</th>
+          <th>IC 95% superior</th>
+          <th>Intercepto</th>
+          <th>R²</th>
+          <th>RMSE</th>
+          <th>Estadístico t</th>
+          <th>p-valor</th>
+          <th>Significancia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="chip" style="background:#534AB7;"></span>Reading</td>
+          <td>1.7969</td><td>1.7453</td><td>1.8485</td><td>41.84</td>
+          <td><strong>0.5029</strong></td><td>6.706</td><td>68.30</td><td>&lt;0.0001</td>
+          <td><span class="badge" style="background:#E1F5EE;color:#0F6E56;">***</span></td>
+        </tr>
+        <tr>
+          <td><span class="chip" style="background:#185FA5;"></span>Grammar</td>
+          <td>2.1385</td><td>2.0927</td><td>2.1842</td><td>42.23</td>
+          <td><strong>0.6454</strong></td><td>5.664</td><td>91.59</td><td>&lt;0.0001</td>
+          <td><span class="badge" style="background:#E1F5EE;color:#0F6E56;">***</span></td>
+        </tr>
+        <tr>
+          <td><span class="chip" style="background:#BA7517;"></span>Writing</td>
+          <td>2.9685</td><td>2.8238</td><td>3.1132</td><td>28.36</td>
+          <td><strong>0.2596</strong></td><td>8.184</td><td>40.21</td><td>&lt;0.0001</td>
+          <td><span class="badge" style="background:#E1F5EE;color:#0F6E56;">***</span></td>
+        </tr>
+        <tr>
+          <td><span class="chip" style="background:#1D9E75;"></span>Listening</td>
+          <td>1.8557</td><td>1.8030</td><td>1.9084</td><td>40.37</td>
+          <td><strong>0.5081</strong></td><td>6.671</td><td>69.01</td><td>&lt;0.0001</td>
+          <td><span class="badge" style="background:#E1F5EE;color:#0F6E56;">***</span></td>
+        </tr>
+        <tr>
+          <td><span class="chip" style="background:#3B6D11;"></span>Speaking</td>
+          <td>4.3148</td><td>4.0969</td><td>4.5328</td><td>9.66</td>
+          <td><strong>0.2462</strong></td><td>8.258</td><td>38.80</td><td>&lt;0.0001</td>
+          <td><span class="badge" style="background:#E1F5EE;color:#0F6E56;">***</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size: 10px; color: var(--color-text-tertiary); margin: 10px 0 0;">*** p &lt; 0.0001 · IC = intervalo de confianza al 95% · RMSE = raíz del error cuadrático medio</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 16px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 12px; flex-wrap:wrap; gap:8px;">
+      <p class="sec" style="margin:0;">Predicción del TOTAL según percentil de la materia seleccionada</p>
+      <div style="display:flex; gap:6px; flex-wrap:wrap;">
+        <button class="tab on" onclick="showMat('READING',this)">Reading</button>
+        <button class="tab" onclick="showMat('GRAMMAR',this)">Grammar</button>
+        <button class="tab" onclick="showMat('WRITING',this)">Writing</button>
+        <button class="tab" onclick="showMat('LISTENING',this)">Listening</button>
+        <button class="tab" onclick="showMat('SPEAKING',this)">Speaking</button>
+      </div>
+    </div>
+    <p style="font-size: 11px; color: var(--color-text-secondary); margin: 0 0 12px;" id="predDesc">Modelo: TOTAL = 41.84 + 1.7969 × Reading &nbsp;|&nbsp; R² = 0.5029</p>
+    <div style="position:relative; height:200px;">
+      <canvas id="predC" role="img" aria-label="Predicción del TOTAL por percentil de materia seleccionada"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="sec">Interpretación del coeficiente: ¿qué mide realmente?</p>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:10px; font-size:12px;">
+      <div style="padding:10px; background:var(--color-background-secondary); border-radius:var(--border-radius-md);">
+        <p style="font-weight:500; color:var(--color-text-primary); margin:0 0 4px;">Coeficiente raw vs Beta</p>
+        <p style="color:var(--color-text-secondary); margin:0;">Speaking tiene el coeficiente raw más alto (4.31) porque su escala es la más estrecha (σ=1.09). El Beta corrige esto: su impacto real es el más bajo (0.115).</p>
+      </div>
+      <div style="padding:10px; background:var(--color-background-secondary); border-radius:var(--border-radius-md);">
+        <p style="font-weight:500; color:var(--color-text-primary); margin:0 0 4px;">Reading domina el Dominance</p>
+        <p style="color:var(--color-text-secondary); margin:0;">Sin Reading el R² cae un 12.78%, la mayor pérdida. Aunque Grammar tiene mejor R² simple, Reading aporta varianza única que ninguna otra materia captura.</p>
+      </div>
+      <div style="padding:10px; background:var(--color-background-secondary); border-radius:var(--border-radius-md);">
+        <p style="font-weight:500; color:var(--color-text-primary); margin:0 0 4px;">Speaking y Writing: efecto marginal</p>
+        <p style="color:var(--color-text-secondary); margin:0;">Juntas explican solo 3.2% de varianza única. Sus notas varían poco entre alumnos (σ ≈ 1.1–1.6), lo que limita su poder discriminante en el modelo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const MAT_COLORS = {
+  READING: '#534AB7', GRAMMAR: '#185FA5', WRITING: '#BA7517', LISTENING: '#1D9E75', SPEAKING: '#3B6D11'
+};
+const MAT_LIGHT = {
+  READING: '#CECBF6', GRAMMAR: '#B5D4F4', WRITING: '#FAC775', LISTENING: '#9FE1CB', SPEAKING: '#C0DD97'
+};
+
+const betaData = {
+  labels: ['Reading','Listening','Grammar','Writing','Speaking'],
+  values: [0.3947, 0.3841, 0.3757, 0.1716, 0.1150],
+  colors: ['#534AB7','#1D9E75','#185FA5','#BA7517','#3B6D11']
+};
+
+new Chart(document.getElementById('betaC'), {
+  type: 'bar',
+  data: {
+    labels: betaData.labels,
+    datasets: [{
+      data: betaData.values,
+      backgroundColor: betaData.colors,
+      borderRadius: 4,
+      borderSkipped: false
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` β = ${ctx.parsed.x.toFixed(4)}` } }
+    },
+    scales: {
+      x: { min: 0, max: 0.45, ticks: { callback: v => v.toFixed(2), font:{size:10} }, grid: { color: 'rgba(128,128,128,0.1)' } },
+      y: { ticks: { font:{size:11} } }
+    }
+  }
+});
+
+new Chart(document.getElementById('domC'), {
+  type: 'bar',
+  data: {
+    labels: ['Reading','Listening','Grammar','Writing','Speaking'],
+    datasets: [{
+      data: [12.779, 11.508, 9.198, 2.204, 0.990],
+      backgroundColor: ['#534AB7','#1D9E75','#185FA5','#BA7517','#3B6D11'],
+      borderRadius: 4, borderSkipped: false
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` −${ctx.parsed.x.toFixed(2)}% R²` } }
+    },
+    scales: {
+      x: { min: 0, max: 15, ticks: { callback: v => v+'%', font:{size:10} }, grid: { color: 'rgba(128,128,128,0.1)' } },
+      y: { ticks: { font:{size:11} } }
+    }
+  }
+});
+
+const predModels = {
+  READING:   { coef: 1.7969, intercept: 41.8387, r2: 0.5029, label: '41.84 + 1.7969 × Reading' },
+  GRAMMAR:   { coef: 2.1385, intercept: 42.2307, r2: 0.6454, label: '42.23 + 2.1385 × Grammar' },
+  WRITING:   { coef: 2.9685, intercept: 28.3582, r2: 0.2596, label: '28.36 + 2.9685 × Writing' },
+  LISTENING: { coef: 1.8557, intercept: 40.3689, r2: 0.5081, label: '40.37 + 1.8557 × Listening' },
+  SPEAKING:  { coef: 4.3148, intercept:  9.6579, r2: 0.2462, label: ' 9.66 + 4.3148 × Speaking' }
+};
+
+const predPercentiles = {
+  READING:   { labels:['P10\n9.3','P25\n12.0','P50\n14.7','P75\n17.3','P90\n19.0'], vals:[9.3,12.0,14.7,17.3,19.0], preds:[58.6,63.4,68.3,72.9,76.0] },
+  GRAMMAR:   { labels:['P10\n7.3','P25\n9.3','P50\n11.9','P75\n14.6','P90\n16.7'], vals:[7.3,9.3,11.9,14.6,16.7], preds:[57.8,62.1,67.7,73.5,77.9] },
+  WRITING:   { labels:['P10\n12.0','P25\n13.0','P50\n13.5','P75\n14.0','P90\n15.0'], vals:[12.0,13.0,13.5,14.0,15.0], preds:[64.0,66.9,68.4,69.9,72.9] },
+  LISTENING: { labels:['P10\n10.0','P25\n12.2','P50\n15.3','P75\n18.0','P90\n20.0'], vals:[10.0,12.2,15.3,18.0,20.0], preds:[58.9,63.0,68.8,73.8,77.5] },
+  SPEAKING:  { labels:['P10\n12.0','P25\n13.0','P50\n13.5','P75\n14.0','P90\n15.0'], vals:[12.0,13.0,13.5,14.0,15.0], preds:[61.4,65.8,67.9,70.1,74.4] }
+};
+
+let predChart = new Chart(document.getElementById('predC'), {
+  type: 'line',
+  data: {
+    labels: predPercentiles.READING.labels,
+    datasets: [{
+      label: 'TOTAL predicho',
+      data: predPercentiles.READING.preds,
+      borderColor: MAT_COLORS.READING,
+      backgroundColor: MAT_COLORS.READING + '22',
+      pointBackgroundColor: MAT_COLORS.READING,
+      pointRadius: 6, tension: 0.3, fill: true
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` TOTAL predicho: ${ctx.parsed.y.toFixed(1)}` } }
+    },
+    scales: {
+      y: { min: 50, max: 85, title: { display: true, text: 'TOTAL predicho', font:{size:10} }, ticks:{font:{size:10}} },
+      x: { ticks:{ font:{size:10} } }
+    }
+  }
+});
+
+function showMat(m, btn) {
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  const model = predModels[m];
+  const pd = predPercentiles[m];
+  document.getElementById('predDesc').textContent = `Modelo: TOTAL = ${model.label}   |   R² = ${model.r2.toFixed(4)}`;
+  predChart.data.labels = pd.labels;
+  predChart.data.datasets[0].data = pd.preds;
+  predChart.data.datasets[0].borderColor = MAT_COLORS[m];
+  predChart.data.datasets[0].backgroundColor = MAT_COLORS[m] + '22';
+  predChart.data.datasets[0].pointBackgroundColor = MAT_COLORS[m];
+  predChart.update();
+}
+</script>
