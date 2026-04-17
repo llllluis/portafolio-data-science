@@ -9,3 +9,6 @@ Data files (si contienen información sensible)
 
 IDE
 .vscode/ .idea/
+
+# Carpeta temporal del análisis de datos
+Analisis de datos con Python pandas/temp/
