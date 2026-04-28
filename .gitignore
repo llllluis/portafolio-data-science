@@ -10,5 +10,6 @@ Data files (si contienen información sensible)
 IDE
 .vscode/ .idea/
 
-# Carpeta temporal del análisis de datos
-Analisis de datos con Python pandas/temp/
+# Carpetas temporales
+analysis-in-english-exams/temp/
+housing-price-prediction/temp/
