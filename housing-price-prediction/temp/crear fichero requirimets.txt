@@ -1,0 +1,2 @@
+cd "C:\LLUIS\Dropbox\CODE\Poyecto github\housing-price-prediction"
+pipreqs . --force --scan-notebooks
