@@ -13,7 +13,8 @@ Bienvenido/a a mi portafolio de proyectos de análisis de datos. Aquí encontrar
 
 | Proyecto | Descripción | Tecnologías |
 |----------|-------------|-------------|
-| [📘 Análisis de Rendimiento en Exámenes de Inglés](/Analisis%20de%20datos%20con%20Python%20pandas/) | Correlación e influencia entre materias parciales y resultado final en cursos extensivos | Python, Pandas, Seaborn, Matplotlib, Regresión Lineal |
+| [📘 Análisis de Rendimiento en Exámenes de Inglés](/analysis-in-english-exams/) | Correlación e influencia entre materias parciales y resultado final en cursos extensivos | Python, Pandas, Seaborn, Matplotlib, Regresión Lineal |
+| [🏠 Análisis California Housing](/housing-price-prediction/) | Predicción de precios de viviendas usando el dataset California Housing | Python, Scikit-Learn, Pandas, Matplotlib |
 
 ## 📬 Contacto
 
