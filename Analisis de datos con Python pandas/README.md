@@ -37,6 +37,8 @@ $$TOTAL = \beta_0 + \beta_1(Reading) + \beta_2(Grammar) + \beta_3(Writing) + \be
 ## 📁 Estructura del Proyecto
 
 Analisis de datos con Python pandas/
+
+```
 ├── README.md
 ├── requirements.txt
 ├── scripts/
@@ -49,7 +51,8 @@ Analisis de datos con Python pandas/
 ├── docs/
 │   ├── Data Understanding.pdf
 │   └── Data_Understanding_Resultados_Ingles.md
-└── temp/ (datos no incluidos por privacidad)
+└── temp/  *(datos no incluidos por privacidad)*
+```
 
 ## 🚀 Ejecución
 
