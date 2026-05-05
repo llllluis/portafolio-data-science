@@ -64,6 +64,7 @@ Los datos utilizados provienen del **Censo de los Estados Unidos de 1990** y fue
 ├── docs/
 │   ├── Data Understanding.pdf
 └── temp/  *(datos no incluidos por privacidad)*
+```
 
 ### Clonar el repositorio
 ```bash
