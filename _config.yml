@@ -5,3 +5,9 @@ kramdown:
   hard_wrap: false
   syntax_highlighter: rouge
   attribute_marks: true   # <-- Esto habilita {:target="_blank"}
+
+
+
+# Opcional: Esto ayuda a Jekyll a generar las URLs correctamente
+url: "https://llllluis.github.io/portafolio-data-science/"
+baseurl: "/portafolio-data-science"
