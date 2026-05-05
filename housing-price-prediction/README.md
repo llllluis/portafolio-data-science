@@ -47,15 +47,6 @@ Los datos utilizados provienen del **Censo de los Estados Unidos de 1990** y fue
 3.  **Construir un modelo de regresión lineal** para predecir `median_house_value`.
 4.  **Evaluar el rendimiento del modelo** utilizando métricas como el Error Cuadrático Medio (RMSE) y el Coeficiente de Determinación (R²).
 
-## 🔍 Principales Hallazgos (Resultados Preliminares)
-
-*   **El `median_income` es el predictor más fuerte:** Existe una clara correlación positiva entre el ingreso medio y el valor de la vivienda.
-*   **La ubicación es clave:** La proximidad al océano influye drásticamente en el precio. Los distritos clasificados como `NEAR BAY` o `<1H OCEAN` tienen valores medios significativamente más altos que los de `INLAND`.
-*   **Efecto geográfico:** Los precios más altos se concentran en las zonas costeras de Los Ángeles, San Francisco y San Diego.
-*   **Datos censurados:** Existe un número considerable de distritos con un valor de `median_house_value` de 500,001 USD, lo que representa un límite superior en la recogida de datos y debe ser considerado durante el modelado.
-
-## 🚀 Primeros Pasos para Ejecutar el Análisis
-
 ### 1. Clonar el repositorio
 ```bash
 git clone https://github.com/tu-usuario/california-housing-analysis.git
