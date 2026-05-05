@@ -47,7 +47,25 @@ Los datos utilizados provienen del **Censo de los Estados Unidos de 1990** y fue
 3.  **Construir un modelo de regresión lineal** para predecir `median_house_value`.
 4.  **Evaluar el rendimiento del modelo** utilizando métricas como el Error Cuadrático Medio (RMSE) y el Coeficiente de Determinación (R²).
 
-### 1. Clonar el repositorio
+## 📁 Estructura del Proyecto
+
+```
+├── README.md
+├── requirements.txt
+├── scripts/
+│   ├── Analisis_ejecutivo_descriptivo.ipynb
+│   ├── Analisis_ejecutivo_predictivo.ipynb
+│   ├── Data_Cleaning_housing.ipynb
+│   └── EDA_housing.ipynb
+│   └── README.md
+├── data/
+│   ├── housing_cleaned.csv
+│   └── housing.csv
+├── docs/
+│   ├── Data Understanding.pdf
+└── temp/  *(datos no incluidos por privacidad)*
+
+### Clonar el repositorio
 ```bash
 git clone https://github.com/tu-usuario/california-housing-analysis.git
 cd california-housing-analysis
