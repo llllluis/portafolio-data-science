@@ -1,2 +1,3 @@
 __Mapa de precios interactivo por ubicación (usando la librería Plotly)__
-[ACCEDER A LA PAGINA mapa_vivienda.html](https://llllluis.github.io/portafolio-data-science/housing-price-prediction/docs/mapa_vivienda.html){:target="_blank"}
+
+[ACCEDER A LA PAGINA mapa_vivienda.html](https://llllluis.github.io/portafolio-data-science/housing-price-prediction/docs/mapa_vivienda.html)
