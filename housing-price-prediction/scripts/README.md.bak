@@ -25,7 +25,7 @@
 
 El dataset original (`housing_clean.csv`) fue limpiado previamente en un proceso de *Data Cleaning*. Se eliminaron valores nulos y atípicos (por ejemplo, valores de `median_house_value = 500,001`). El conjunto final contiene **19,670 registros** y **12 variables**.
 
-````python
+```python
 # Verificación de nulos
 Valores nulos por columna:
  longitude                   0
@@ -40,7 +40,7 @@ Valores nulos por columna:
  bedrooms_per_room           0
  population_per_household    0
  median_house_value          0
-````
+
 # 1.2. Estadísticas descriptivas
 
 | Variable                     | Media     | Desv. típica | Mínimo  | Máximo     |
@@ -185,7 +185,7 @@ Se aplicó `GridSearchCV` con validación cruzada (3 folds).
   'n_estimators': 300,
   'subsample': 0.8
 }
-````
+
 ## Modelo optimizado
 
 - **RMSE:** 40,356 (mejora de ~2,500)
