@@ -1,0 +1,7 @@
+# Configuración de GitHub Pages con Jekyll
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+  attribute_marks: true   # <-- Esto habilita {:target="_blank"}
