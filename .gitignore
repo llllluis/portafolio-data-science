@@ -11,5 +11,7 @@ IDE
 .vscode/ .idea/
 
 # Carpetas temporales
+/temp/
 analysis-in-english-exams/temp/
 housing-price-prediction/temp/
+superstore-sales-dashboard/temp/
