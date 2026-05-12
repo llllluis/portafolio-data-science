@@ -15,7 +15,7 @@ Bienvenido/a a mi portafolio de proyectos de análisis de datos. Aquí encontrar
 |----------|-------------|-------------|
 | [📘 Análisis de Rendimiento en Exámenes de Inglés](/analysis-in-english-exams/) | Correlación e influencia entre materias parciales y resultado final en cursos extensivos | Python, Pandas, Seaborn, Matplotlib, Regresión Lineal |
 | [🏠 Análisis California Housing](/housing-price-prediction/) | Predicción de precios de viviendas usando el dataset California Housing | Python, Scikit-Learn, Pandas, Matplotlib |
-|[ 📊 Análisis de Ventas Retail](/superstore-sales-dashboard/) | Análisis exhaustivo de un dataset de ventas retail (Superstore), transformando datos brutos en insights de negocio accionables.
+|[ 📊 Análisis de Ventas Retail](/superstore-sales-dashboard/) | Análisis exhaustivo de un dataset de ventas retail (Superstore), transformando datos brutos en insights de negocio accionables |  Python, Plotly & Streamlit dashboard + Power BI report · pandas · DAX · EDA · Business Storytelling |
 
 ## 📬 Contacto
 
