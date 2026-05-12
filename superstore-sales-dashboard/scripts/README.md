@@ -53,7 +53,7 @@ Tras una primera exploración, se realizaron las siguientes modificaciones para 
 
 ### 1. Carga e Inspección Inicial
 
-```python
+
 # Conversión de tipos y verificación de calidad
 - Se identificaron y corrigieron los tipos de datos de las columnas
 - Se detectaron 11 valores nulos en la columna 'Postal Code'
