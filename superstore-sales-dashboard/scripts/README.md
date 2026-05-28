@@ -41,7 +41,7 @@ El dataset `superstore_raw.csv` contiene información de ventas de una tienda mi
 
 | Verificación | Resultado |
 |--------------|-----------|
-| Valores nulos | 11 valores nulos en `Postal Code` |
+| Valores nulos | Sin valores nulos |
 | Duplicados | Sin duplicados completos |
 | Rango de fechas | 2014-01-01 a 2017-12-31 |
 
@@ -211,7 +211,7 @@ El dataset transformado se guardó como `superstore_clean.csv` para su uso en no
 
 ### Observaciones Clave
 
-- ✅ **Sin valores nulos** en el dataset limpio (se gestionaron los 11 nulos de Postal Code)
+- ✅ **Sin valores nulos** en el dataset limpio
 - ✅ **País único** (United States) - podría eliminarse para optimizar espacio
 - ✅ **Ship Lag** varía de 0 a 14 días (envíos más rápidos: Same Day/First Class)
 - ✅ **Profit Margin** puede ser negativo (productos con pérdidas)
