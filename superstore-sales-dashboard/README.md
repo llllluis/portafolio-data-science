@@ -131,10 +131,6 @@ streamlit>=1.28.0
 
 ---
 
-
-*Part of my Data Analytics portfolio — see also:*  
-*[English Exam Correlation Analysis](link) · [California Housing Market Analysis](link)*
-
 ## 🚀 Cómo ejecutar el proyecto
 
 1. Clonar el repositorio
@@ -159,6 +155,9 @@ streamlit>=1.28.0
 **Your Name**  
 Data Analyst  
 [LinkedIn](https://linkedin.com/in/your-profile) · [GitHub](https://github.com/your-username)
+
+*Part of my Data Analytics portfolio — see also:*  
+*[English Exam Correlation Analysis](link) · [California Housing Market Analysis](link)*
 
 ---
 
