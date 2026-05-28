@@ -1,5 +1,5 @@
 # 📦 Superstore Sales Dashboard
-*Python · Pandas · Plotly · Streamlit · Power BI · DAX*
+*Análisis de Ventas Retail — Dashboard Interactivo & Business Storytelling*
 --
 
 ## 🔗 Live Demo
@@ -11,8 +11,6 @@
 ---
 
 **Dataset original:** [Superstore Sales Dataset](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final) — 9,994 rows · 21 columns · Kaggle
-
-# Análisis de Ventas Retail — Dashboard Interactivo & Business Storytelling
 
 ---
 
