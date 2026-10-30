@@ -16,7 +16,7 @@ Esta versión se ha desarrollado intencionadamente con una estructura monolític
 
 Después de completar esta versión, se utilizó una herramienta de IA como asistente para transformar el proyecto en una versión modularizada. La comparación entre ambas permite estudiar las ventajas y los inconvenientes de cada estructura.
 
-> **Versión modularizada:** _[enlace pendiente de añadir cuando se publique en GitHub]._
+> **Versión modularizada:** _[https://github.com/llllluis/portafolio-data-science/tree/main/AI_Exam_Performance_Analyst_modularizado]._
 
 ---
 

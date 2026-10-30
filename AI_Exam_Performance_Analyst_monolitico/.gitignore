@@ -12,3 +12,4 @@ venv/
 # Archivos temporales y del sistema
 .DS_Store
 Thumbs.db
+*.bak
