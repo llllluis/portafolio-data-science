@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Informe de rendimiento académico - 1702</title>
+
+    <link rel="stylesheet" href="informe.css">
+</head>
+
+<body class="student-report">
+
+    <div class="report-toolbar no-print">
+        <button class="btn btn-primary" onclick="window.print()">
+            Imprimir / Guardar como PDF
+        </button>
+    </div>
+
+    <main class="container report-container">
+
+        <!-- ==================================================
+             BLOC 1. CAPÇALERA DE L'AVALUACIÓ
+             ================================================== -->
+
+        <header class="report-header">
+            <div class="header-visual-row">
+                <div class="report-brand">
+                    <img src="..\data\logo.png"
+                         alt="Logo de l'escola"
+                         class="school-logo">
+                    <span class="brand-text">Comunica-T</span>
+                    <span class="brand-subtext">School</span>
+                </div>
+                <div class="report-heading">
+                    <h1>Informe de rendimiento académico</h1>
+                    <p class="report-subtitle">Informe individual de aprendizaje de inglés</p>
+                </div>
+                <div class="student-photo-container">
+                    <img src="..\data\student_ia\1702.jpg" alt="Alumno/a" class="student-photo"
+                         onerror="this.style.display='none'">
+                </div>
+            </div>
+
+            <div class="header-info-row academic-info-row">
+                <div class="header-info-item">
+                    <span>Año escolar</span>
+                    <strong>2025-2026</strong>
+                </div>
+                <div class="header-info-item">
+                    <span>Curso</span>
+                    <strong>A1 Extensive General English</strong>
+                </div>
+                <div class="header-info-item">
+                    <span>Alumno/a</span>
+                    <strong>Antonia Nadal</strong>
+                </div>
+            </div>
+
+            <div class="header-info-row evaluation-info-row">
+                <div class="header-info-item">
+                    <span>Profesor/a</span>
+                    <strong>Anna Grace</strong>
+                </div>
+                <div class="header-info-item">
+                    <span>Evaluación</span>
+                    <strong>Evaluación final junio (20/06/2026)</strong>
+                </div>
+                <div class="header-info-item">
+                    <span>Identificador del alumno</span>
+                    <strong>1702</strong>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- ==================================================
+             BLOC 2. RESULTATS ACADÈMICS
+             ================================================== -->
+
+        <section class="report-section">
+            <div class="section-header">
+                <h2>Resultados académicos</h2>
+            </div>
+
+            
+    <div class="summary-grid">
+        <article class="summary-card">
+            <span class="summary-label">Media</span>
+            <strong class="summary-number">69.8%</strong>
+        </article>
+
+        <article class="summary-card summary-best">
+            <span class="summary-label">Mejor competencia</span>
+            <strong class="summary-text">Writing</strong>
+        </article>
+
+        <article class="summary-card summary-weakest">
+            <span class="summary-label">Competencia a reforzar</span>
+            <strong class="summary-text">Reading</strong>
+        </article>
+    </div>
+    
+
+            <div class="scores-layout">
+
+                <div class="average-chart-panel">
+                    <h3>Resultado final</h3>
+                    
+        <div class="score-card average-card">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Media: 69.8%"
+                style="--score-angle: 251.28deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        69.8
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Media</h3>
+        </div>
+        
+                </div>
+
+                <div class="skills-panel">
+                    <h3>Resultados por competencia</h3>
+
+                    <div class="scores-grid">
+                        
+        <div class="score-card ">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Grammar: 74%"
+                style="--score-angle: 266.40deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        74
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Grammar</h3>
+        </div>
+        
+        <div class="score-card ">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Listening: 66%"
+                style="--score-angle: 237.60deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        66
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Listening</h3>
+        </div>
+        
+        <div class="score-card ">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Reading: 50%"
+                style="--score-angle: 180.00deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        50
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Reading</h3>
+        </div>
+        
+        <div class="score-card ">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Speaking: 79%"
+                style="--score-angle: 284.40deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        79
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Speaking</h3>
+        </div>
+        
+        <div class="score-card ">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Writing: 80%"
+                style="--score-angle: 288.00deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        80
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Writing</h3>
+        </div>
+        
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="scores-table-container">
+                <table class="scores-table">
+                    <thead>
+                        <tr>
+                            <th>Resultados por competencia</th>
+                            <th>Puntuación</th>
+                            <th class="pass-status-heading">Pass/No pass</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+        <tr>
+            <td>Grammar</td>
+            <td class="score-cell">
+                74%
+            </td>
+            <td class="pass-status-cell" rowspan="5">
+        <div class="pass-bar-component">
+            <div class="pass-bar-horizontal-wrap">
+                <div class="pass-bar-scale-labels">
+                    <span>0</span>
+                    <span>100</span>
+                </div>
+                <div class="pass-bar pass-bar-horizontal" role="img"
+                     aria-label="Escala de resultats de 0 a 100. Nota de aprobado: 64.5. Pass.">
+                    <span class="pass-threshold-marker" style="--marker-position: 64.5000%" aria-hidden="true"></span>
+                    <span class="pass-score-marker" style="--marker-position: 69.8000%" title="Resultat final: 69.8%" aria-label="Resultat final: 69.8%"><span class="pass-score-value">69.8%</span></span>
+                </div>
+            </div>
+            <div class="pass-bar-details">
+                <div class="pass-mark-label">Nota de aprobado: 64.5</div>
+                <div class="pass-result-label exam-status-pass" role="status">
+                    Pass
+                </div>
+            </div>
+        </div>
+    </td>
+        </tr>
+        
+        <tr>
+            <td>Listening</td>
+            <td class="score-cell">
+                66%
+            </td>
+            
+        </tr>
+        
+        <tr>
+            <td>Reading</td>
+            <td class="score-cell">
+                50%
+            </td>
+            
+        </tr>
+        
+        <tr>
+            <td>Speaking</td>
+            <td class="score-cell">
+                79%
+            </td>
+            
+        </tr>
+        
+        <tr>
+            <td>Writing</td>
+            <td class="score-cell">
+                80%
+            </td>
+            
+        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+        
+
+        <!-- ==================================================
+             BLOC 4. COMENTARI DEL PROFESSOR
+             ================================================== -->
+
+        <section class="report-section teacher-report-section">
+            <div class="section-header">
+                <h2>Comentario del profesor</h2>
+            </div>
+
+            <div class="teacher-comment-card">
+                <div class="teacher-comment-label">
+                    Valoración del profesor
+                </div>
+
+                <p class="teacher-comment-intro">
+                    Observaciones originales del profesor sobre la evaluación.
+                </p>
+
+                <div class="teacher-comment-text">Antonia, you are highly motivated to learn English, and you have worked really well the whole intensive course both in class and at home. Your exam result is great. Congratulations! You should definitely continue learning English during the year, and after the intensive course you are ready to do level A2. Anna, I will be very glad to see you in our school in October. Enjoy your summer holidays!</div>
+
+                <div class="teacher-signature">
+                    Profesor/a:
+                    <strong>Anna Grace</strong>
+                </div>
+            </div>
+        </section>
+
+
+        <footer class="report-footer">
+            <p class="report-footer-caption">Informe individual de seguimiento académico <span class="footer-separator">|</span> <span class="footer-school-name">Escola Comunica't</span></p>
+            <nav class="contact-footer" aria-label="Contacte de l'escola">
+                <a href="https://www.google.com/maps/search/?api=1&query=Entença%2C%2089%2C%2008015%2C%20Barcelona" target="_blank" rel="noopener noreferrer">📍 Entença, 89, 08015, Barcelona</a>
+                <a href="tel:+34934262479">☎ 934 262 479</a>
+                <a href="https://wa.me/34601302029" target="_blank" rel="noopener noreferrer">💬 601 30 20 29</a>
+                <a href="mailto:info@comunicat.school">✉ info@comunicat.school</a>
+                <a href="https://www.comunicat.school" target="_blank" rel="noopener noreferrer">🌐 www.comunicat.school</a>
+            </nav>
+        </footer>
+
+    </main>
+</body>
+</html>

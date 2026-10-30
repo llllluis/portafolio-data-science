@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Informe de rendiment acadèmic - 1702</title>
+
+    <link rel="stylesheet" href="informe.css">
+</head>
+
+<body class="student-report">
+
+    <div class="report-toolbar no-print">
+        <button class="btn btn-primary" onclick="window.print()">
+            Imprimir / Desar com a PDF
+        </button>
+    </div>
+
+    <main class="container report-container">
+
+        <!-- ==================================================
+             BLOC 1. CAPÇALERA DE L'AVALUACIÓ
+             ================================================== -->
+
+        <header class="report-header">
+            <div class="header-visual-row">
+                <div class="report-brand">
+                    <img src="..\data\logo.png"
+                         alt="Logo de l'escola"
+                         class="school-logo">
+                    <span class="brand-text">Comunica-T</span>
+                    <span class="brand-subtext">School</span>
+                </div>
+                <div class="report-heading">
+                    <h1>Informe de rendiment acadèmic</h1>
+                    <p class="report-subtitle">Informe individual d&#x27;aprenentatge d&#x27;anglès</p>
+                </div>
+                <div class="student-photo-container">
+                    <img src="..\data\student_ia\1702.jpg" alt="Alumne/a" class="student-photo"
+                         onerror="this.style.display='none'">
+                </div>
+            </div>
+
+            <div class="header-info-row academic-info-row">
+                <div class="header-info-item">
+                    <span>Any escolar</span>
+                    <strong>2025-2026</strong>
+                </div>
+                <div class="header-info-item">
+                    <span>Curs</span>
+                    <strong>A1 Extensive General English</strong>
+                </div>
+                <div class="header-info-item">
+                    <span>Alumne/a</span>
+                    <strong>Antonia Nadal</strong>
+                </div>
+            </div>
+
+            <div class="header-info-row evaluation-info-row">
+                <div class="header-info-item">
+                    <span>Professor/a</span>
+                    <strong>Anna Grace</strong>
+                </div>
+                <div class="header-info-item">
+                    <span>Avaluació</span>
+                    <strong>Evaluación final junio (20/06/2026)</strong>
+                </div>
+                <div class="header-info-item">
+                    <span>Identificador de l&#x27;alumne</span>
+                    <strong>1702</strong>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- ==================================================
+             BLOC 2. RESULTATS ACADÈMICS
+             ================================================== -->
+
+        <section class="report-section">
+            <div class="section-header">
+                <h2>Resultats acadèmics</h2>
+            </div>
+
+            
+    <div class="summary-grid">
+        <article class="summary-card">
+            <span class="summary-label">Mitjana</span>
+            <strong class="summary-number">69.8%</strong>
+        </article>
+
+        <article class="summary-card summary-best">
+            <span class="summary-label">Millor competència</span>
+            <strong class="summary-text">Writing</strong>
+        </article>
+
+        <article class="summary-card summary-weakest">
+            <span class="summary-label">Competència a reforçar</span>
+            <strong class="summary-text">Reading</strong>
+        </article>
+    </div>
+    
+
+            <div class="scores-layout">
+
+                <div class="average-chart-panel">
+                    <h3>Resultat final</h3>
+                    
+        <div class="score-card average-card">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Mitjana: 69.8%"
+                style="--score-angle: 251.28deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        69.8
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Mitjana</h3>
+        </div>
+        
+                </div>
+
+                <div class="skills-panel">
+                    <h3>Resultats per competència</h3>
+
+                    <div class="scores-grid">
+                        
+        <div class="score-card ">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Grammar: 74%"
+                style="--score-angle: 266.40deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        74
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Grammar</h3>
+        </div>
+        
+        <div class="score-card ">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Listening: 66%"
+                style="--score-angle: 237.60deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        66
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Listening</h3>
+        </div>
+        
+        <div class="score-card ">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Reading: 50%"
+                style="--score-angle: 180.00deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        50
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Reading</h3>
+        </div>
+        
+        <div class="score-card ">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Speaking: 79%"
+                style="--score-angle: 284.40deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        79
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Speaking</h3>
+        </div>
+        
+        <div class="score-card ">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Writing: 80%"
+                style="--score-angle: 288.00deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        80
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Writing</h3>
+        </div>
+        
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="scores-table-container">
+                <table class="scores-table">
+                    <thead>
+                        <tr>
+                            <th>Resultats per competència</th>
+                            <th>Puntuació</th>
+                            <th class="pass-status-heading">Pass/No pass</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+        <tr>
+            <td>Grammar</td>
+            <td class="score-cell">
+                74%
+            </td>
+            <td class="pass-status-cell" rowspan="5">
+        <div class="pass-bar-component">
+            <div class="pass-bar-horizontal-wrap">
+                <div class="pass-bar-scale-labels">
+                    <span>0</span>
+                    <span>100</span>
+                </div>
+                <div class="pass-bar pass-bar-horizontal" role="img"
+                     aria-label="Escala de resultats de 0 a 100. Llindar de superació: 64.5. Pass.">
+                    <span class="pass-threshold-marker" style="--marker-position: 64.5000%" aria-hidden="true"></span>
+                    <span class="pass-score-marker" style="--marker-position: 69.8000%" title="Resultat final: 69.8%" aria-label="Resultat final: 69.8%"><span class="pass-score-value">69.8%</span></span>
+                </div>
+            </div>
+            <div class="pass-bar-details">
+                <div class="pass-mark-label">Llindar de superació: 64.5</div>
+                <div class="pass-result-label exam-status-pass" role="status">
+                    Pass
+                </div>
+            </div>
+        </div>
+    </td>
+        </tr>
+        
+        <tr>
+            <td>Listening</td>
+            <td class="score-cell">
+                66%
+            </td>
+            
+        </tr>
+        
+        <tr>
+            <td>Reading</td>
+            <td class="score-cell">
+                50%
+            </td>
+            
+        </tr>
+        
+        <tr>
+            <td>Speaking</td>
+            <td class="score-cell">
+                79%
+            </td>
+            
+        </tr>
+        
+        <tr>
+            <td>Writing</td>
+            <td class="score-cell">
+                80%
+            </td>
+            
+        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+        
+        <!-- ==================================================
+             BLOC 3. INFORME PEDAGÒGIC GENERAT PER LA LLM
+             ================================================== -->
+
+        <section class="report-section">
+            <div class="section-header">
+                <h2>Anàlisi pedagògica assistida per IA</h2>
+            </div>
+
+            <div class="pedagogy-section">
+                <h3>Punts forts</h3>
+                <div class="pedagogy-grid strengths-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+                    
+            <article class="pedagogy-card strength-card">
+                <div class="skill-badge">Writing</div>
+                <div class="pedagogy-score">
+                    80%
+                </div>
+                <p>Et porta geni l&#x27;escriptura! Tens una puntuació de 80, la més alta del teu perfil. Pots expressar idees per escrit amb claredat i tens un bon control de l&#x27;estructura dels textos.</p>
+            </article>
+            
+            <article class="pedagogy-card strength-card">
+                <div class="skill-badge">Speaking</div>
+                <div class="pedagogy-score">
+                    79%
+                </div>
+                <p>Et defens molt bé a l&#x27;oral. Amb un 79, parlar és un dels teus punts forts; tens fluïdesa i et comuniques amb confiança.</p>
+            </article>
+            
+                </div>
+            </div>
+
+            <div class="pedagogy-section">
+                <h3>Aspectes a millorar</h3>
+                <div class="pedagogy-grid improvements-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+                    
+            <article class="pedagogy-card improvement-card">
+                <div class="improvement-header">
+                    <h3>Reading</h3>
+                    <span class="priority-badge priority-high">
+                        Prioritat: Alta
+                    </span>
+                </div>
+                <div class="pedagogy-score">
+                    50%
+                </div>
+                <p>La lectura és la competència que més t&#x27;ha de costar aquest cop, amb un 50. No te n&#x27;aturis: és una àrea on pots avançar molt amb práctica regular. L&#x27;objectiu és que entenguis millor textos escrits i no et quedis a la superfície.</p>
+            </article>
+            
+            <article class="pedagogy-card improvement-card">
+                <div class="improvement-header">
+                    <h3>Listening</h3>
+                    <span class="priority-badge priority-medium">
+                        Prioritat: Mitjana
+                    </span>
+                </div>
+                <div class="pedagogy-score">
+                    66%
+                </div>
+                <p>La comprensió oral va bé, però pot millorar. Tens un 66, de sorte que entens la idea general, però potser et faltin detalls o et costin els accents i el ritme natural.</p>
+            </article>
+            
+                </div>
+            </div>
+
+            <div class="balance-card">
+                <h3>Equilibri entre competències</h3>
+                <p>Tens un perfil molt equilibrat entre l&#x27;escriptura i la parla, amb puntuacions altes en ambdues (80 i 79), però hi ha una diferència notable amb la lectura (50), que és la teva nota més baixa. La gramàtica (74) i l&#x27;escolta (66) estan en un nivell intermedi. Recorda que totes les competències compten el 20% de la nota final, per això és important que no deixis de banda la lectura ni l&#x27;escolta mentre continues cultivant els teus punts forts a l&#x27;oral i a l&#x27;escriptura.</p>
+            </div>
+
+            <div class="pedagogy-section">
+                <h3>Propostes d&#x27;activitats</h3>
+                <div class="activities-list">
+                    
+            <article class="activity-card">
+                <div class="activity-number">1</div>
+                <div class="activity-content">
+                    <span class="skill-badge">
+                        Reading
+                    </span>
+
+                    <h3>Llegir textos curts i adaptats al teu nivell, com lectures graduades o articles sobre temes que t&#x27;interessin.</h3>
+
+                    <div class="activity-field">
+                        <h4>Com ho pots practicar</h4>
+                        <p>1. Tria un text curt (una pàgina o menys) sobre un tema que t&#x27;agradi. 2. Llegeix-lo una primera vegada sense parar per comprendre la idea general. 3. Llegeix una segona vegada i sublira les paraules que no entenguis. 4. Cerca el significat de les paraules clau i escriu una frase pròpia amb cada una. 5. Resumeix el text en tres o quatre frases per escrit o ho explica en alt.</p>
+                    </div>
+
+                    <div class="activity-objective">
+                        <h4>Objectiu d&#x27;aprenentatge</h4>
+                        <p>Millorar la comprensió de lectura i ampliar el vocabulari a través de textos curts i motivants.</p>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="activity-card">
+                <div class="activity-number">2</div>
+                <div class="activity-content">
+                    <span class="skill-badge">
+                        Listening
+                    </span>
+
+                    <h3>Escoltar vídeos o podcasts en anglès amb subtítols, primer en anglès i després sense ells.</h3>
+
+                    <div class="activity-field">
+                        <h4>Com ho pots practicar</h4>
+                        <p>1. Tria un vídeo o un episodi de podcast curt (3-5 minuts) sobre un tema tòpic. 2. Escolta-hi amb subtítols en anglès i anota les idees principals. 3. Tornes a escoltar el mateix clip sense subtítols i intenta identificar les paraules clau que ja has vist. 4. Repeteix en alt algunes frases per practicar la pronunciació i l&#x27;entonació.</p>
+                    </div>
+
+                    <div class="activity-objective">
+                        <h4>Objectiu d&#x27;aprenentatge</h4>
+                        <p>Millorar la comprensió oral i acostumar l&#x27;oïda al ritme i als accents de l&#x27;anglès natural.</p>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="activity-card">
+                <div class="activity-number">3</div>
+                <div class="activity-content">
+                    <span class="skill-badge">
+                        Speaking
+                    </span>
+
+                    <h3>Parlar en anglès regularment, descrient imatges o experiències del dia a dia.</h3>
+
+                    <div class="activity-field">
+                        <h4>Com ho pots practicar</h4>
+                        <p>1. Tri a cada dia una imatge o un tema quotidian, com el teu despatge o una foto de vacances. 2. Parla en alt durant un minut descrivint el què veies, el què està passant i com et sentis. 3. Gieta-te amb el mòbil i escolta&#x27;t per detectar errors o paraules que t&#x27;hagin faltat. 4. Torna a provar-ho el dia següent amb un tema diferent.</p>
+                    </div>
+
+                    <div class="activity-objective">
+                        <h4>Objectiu d&#x27;aprenentatge</h4>
+                        <p>Mantindre i augmentar la fluïdesa i la confiança a l&#x27;hora de parlar en anglès.</p>
+                    </div>
+                </div>
+            </article>
+            
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- ==================================================
+             BLOC 4. COMENTARI DEL PROFESSOR
+             ================================================== -->
+
+        <section class="report-section teacher-report-section">
+            <div class="section-header">
+                <h2>Comentari del professor</h2>
+            </div>
+
+            <div class="teacher-comment-card">
+                <div class="teacher-comment-label">
+                    Valoració del professor
+                </div>
+
+                <p class="teacher-comment-intro">
+                    Observacions originals del professor sobre l&#x27;avaluació.
+                </p>
+
+                <div class="teacher-comment-text">Antonia, you are highly motivated to learn English, and you have worked really well the whole intensive course both in class and at home. Your exam result is great. Congratulations! You should definitely continue learning English during the year, and after the intensive course you are ready to do level A2. Anna, I will be very glad to see you in our school in October. Enjoy your summer holidays!</div>
+
+                <div class="teacher-signature">
+                    Professor/a:
+                    <strong>Anna Grace</strong>
+                </div>
+            </div>
+        </section>
+
+
+        <footer class="report-footer">
+            <p class="report-footer-caption">Informe individual de seguiment acadèmic <span class="footer-separator">|</span> <span class="footer-school-name">Escola Comunica't</span></p>
+            <nav class="contact-footer" aria-label="Contacte de l'escola">
+                <a href="https://www.google.com/maps/search/?api=1&query=Entença%2C%2089%2C%2008015%2C%20Barcelona" target="_blank" rel="noopener noreferrer">📍 Entença, 89, 08015, Barcelona</a>
+                <a href="tel:+34934262479">☎ 934 262 479</a>
+                <a href="https://wa.me/34601302029" target="_blank" rel="noopener noreferrer">💬 601 30 20 29</a>
+                <a href="mailto:info@comunicat.school">✉ info@comunicat.school</a>
+                <a href="https://www.comunicat.school" target="_blank" rel="noopener noreferrer">🌐 www.comunicat.school</a>
+            </nav>
+        </footer>
+
+    </main>
+</body>
+</html>

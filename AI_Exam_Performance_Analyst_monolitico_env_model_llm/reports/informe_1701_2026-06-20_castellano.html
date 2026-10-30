@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Informe de rendimiento académico - 1701</title>
+
+    <link rel="stylesheet" href="informe.css">
+</head>
+
+<body class="student-report">
+
+    <div class="report-toolbar no-print">
+        <button class="btn btn-primary" onclick="window.print()">
+            Imprimir / Guardar como PDF
+        </button>
+    </div>
+
+    <main class="container report-container">
+
+        <!-- ==================================================
+             BLOC 1. CABECERA DE LA AVALUACIÓ
+             ================================================== -->
+
+        <header class="report-header">
+            <div class="header-visual-row">
+                <div class="report-brand">
+                    <img src="..\data\logo.png"
+                         alt="Logo de l'escola"
+                         class="school-logo">
+                    <span class="brand-text">Comunica-T</span>
+                    <span class="brand-subtext">School</span>
+                </div>
+                <div class="report-heading">
+                    <h1>Informe de rendimiento académico</h1>
+                    <p class="report-subtitle">Informe individual de aprendizaje de inglés</p>
+                </div>
+                <div class="student-photo-container">
+                    <img src="..\data\student_ia\1701.jpg" alt="Alumno/a" class="student-photo"
+                         onerror="this.style.display='none'">
+                </div>
+            </div>
+
+            <div class="header-info-row academic-info-row">
+                <div class="header-info-item">
+                    <span>Año escolar</span>
+                    <strong>2025-2026</strong>
+                </div>
+                <div class="header-info-item">
+                    <span>Curso</span>
+                    <strong>A2 General Intensive</strong>
+                </div>
+                <div class="header-info-item">
+                    <span>Alumno/a</span>
+                    <strong>Júlia Serra</strong>
+                </div>
+            </div>
+
+            <div class="header-info-row evaluation-info-row">
+                <div class="header-info-item">
+                    <span>Profesor/a</span>
+                    <strong>Anna Grace</strong>
+                </div>
+                <div class="header-info-item">
+                    <span>Evaluación</span>
+                    <strong>Evaluación final junio (20/06/2026)</strong>
+                </div>
+                <div class="header-info-item">
+                    <span>Identificador del alumno</span>
+                    <strong>1701</strong>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- ==================================================
+             BLOC 2. RESULTADOS ACADÉMICOS
+             ================================================== -->
+
+        <section class="report-section">
+            <div class="section-header">
+                <h2>Resultados académicos</h2>
+            </div>
+
+            
+    <div class="summary-grid">
+        <article class="summary-card">
+            <span class="summary-label">Media</span>
+            <strong class="summary-number">44.75%</strong>
+        </article>
+
+        <article class="summary-card summary-best">
+            <span class="summary-label">Mejor competencia</span>
+            <strong class="summary-text">Reading</strong>
+        </article>
+
+        <article class="summary-card summary-weakest">
+            <span class="summary-label">Competencia a reforzar</span>
+            <strong class="summary-text">Listening</strong>
+        </article>
+    </div>
+    
+
+            <div class="scores-layout">
+
+                <div class="average-chart-panel">
+                    <h3>Resultado final</h3>
+                    
+        <div class="score-card average-card">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Media: 44.75%"
+                style="--score-angle: 161.10deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        44.75
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Media</h3>
+        </div>
+        
+                </div>
+
+                <div class="skills-panel">
+                    <h3>Resultados por competencia</h3>
+
+                    <div class="scores-grid">
+                        
+        <div class="score-card ">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Grammar: 45%"
+                style="--score-angle: 162.00deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        45
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Grammar</h3>
+        </div>
+        
+        <div class="score-card ">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Listening: 38.5%"
+                style="--score-angle: 138.60deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        38.5
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Listening</h3>
+        </div>
+        
+        <div class="score-card ">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Reading: 52%"
+                style="--score-angle: 187.20deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        52
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Reading</h3>
+        </div>
+        
+        <div class="score-card ">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Speaking: 41%"
+                style="--score-angle: 147.60deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        41
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Speaking</h3>
+        </div>
+        
+        <div class="score-card ">
+            <div
+                class="donut-chart"
+                role="img"
+                aria-label="Writing: 47.25%"
+                style="--score-angle: 170.10deg;"
+            >
+                <div class="donut-inner">
+                    <span class="donut-value">
+                        47.25
+                    </span>
+                    <span class="donut-percent">%</span>
+                </div>
+            </div>
+            <h3>Writing</h3>
+        </div>
+        
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="scores-table-container">
+                <table class="scores-table">
+                    <thead>
+                        <tr>
+                            <th>Resultados por competencia</th>
+                            <th>Puntuación</th>
+                            <th class="pass-status-heading">Pass/No pass</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+        <tr>
+            <td>Grammar</td>
+            <td class="score-cell">
+                45%
+            </td>
+            <td class="pass-status-cell" rowspan="5">
+        <div class="pass-bar-component">
+            <div class="pass-bar-horizontal-wrap">
+                <div class="pass-bar-scale-labels">
+                    <span>0</span>
+                    <span>100</span>
+                </div>
+                <div class="pass-bar pass-bar-horizontal" role="img"
+                     aria-label="Escala de resultats de 0 a 100. Nota de aprobado: 64.5. No pass.">
+                    <span class="pass-threshold-marker" style="--marker-position: 64.5000%" aria-hidden="true"></span>
+                    <span class="pass-score-marker" style="--marker-position: 44.7500%" title="Resultat final: 44.75%" aria-label="Resultat final: 44.75%"><span class="pass-score-value">44.75%</span></span>
+                </div>
+            </div>
+            <div class="pass-bar-details">
+                <div class="pass-mark-label">Nota de aprobado: 64.5</div>
+                <div class="pass-result-label exam-status-no-pass" role="status">
+                    No pass
+                </div>
+            </div>
+        </div>
+    </td>
+        </tr>
+        
+        <tr>
+            <td>Listening</td>
+            <td class="score-cell">
+                38.5%
+            </td>
+            
+        </tr>
+        
+        <tr>
+            <td>Reading</td>
+            <td class="score-cell">
+                52%
+            </td>
+            
+        </tr>
+        
+        <tr>
+            <td>Speaking</td>
+            <td class="score-cell">
+                41%
+            </td>
+            
+        </tr>
+        
+        <tr>
+            <td>Writing</td>
+            <td class="score-cell">
+                47.25%
+            </td>
+            
+        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+        
+        <!-- ==================================================
+             BLOC 3. INFORME PEDAGOGICO GENERADO POR LA LLM
+             ================================================== -->
+
+        <section class="report-section">
+            <div class="section-header">
+                <h2>Análisis pedagógico asistido por IA</h2>
+            </div>
+
+            <div class="pedagogy-section">
+                <h3>Puntos fuertes</h3>
+                <div class="pedagogy-grid strengths-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+                    
+            <article class="pedagogy-card strength-card">
+                <div class="skill-badge">Reading</div>
+                <div class="pedagogy-score">
+                    52%
+                </div>
+                <p>¡Tu mejor habilidad es la lectura! Con 52 puntos, entiendes bastante bien los textos en inglés. Sigue aprovechando esta ventaja para aprender vocabulario y estructuras nuevas.</p>
+            </article>
+            
+            <article class="pedagogy-card strength-card">
+                <div class="skill-badge">Writing</div>
+                <div class="pedagogy-score">
+                    47.25%
+                </div>
+                <p>Tu escritura está por encima del promedio general. Te defiendes bien al expresarte por escrito, aunque todavía puedes pulirla con más práctica.</p>
+            </article>
+            
+                </div>
+            </div>
+
+            <div class="pedagogy-section">
+                <h3>Aspectos a mejorar</h3>
+                <div class="pedagogy-grid improvements-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
+                    
+            <article class="pedagogy-card improvement-card">
+                <div class="improvement-header">
+                    <h3>Listening</h3>
+                    <span class="priority-badge priority-high">
+                        Prioridad: Alta
+                    </span>
+                </div>
+                <div class="pedagogy-score">
+                    38.5%
+                </div>
+                <p>Esta es tu área más débil. Entender el inglés hablado te cuesta más, así que es una prioridad practicar la comprensión auditiva con frecuencia.</p>
+            </article>
+            
+            <article class="pedagogy-card improvement-card">
+                <div class="improvement-header">
+                    <h3>Speaking</h3>
+                    <span class="priority-badge priority-high">
+                        Prioridad: Alta
+                    </span>
+                </div>
+                <div class="pedagogy-score">
+                    41%
+                </div>
+                <p>Hablar en inglés te resulta difícil. Te recomiendo practicar la expresión oral con regularidad para ganar confianza y fluidez.</p>
+            </article>
+            
+            <article class="pedagogy-card improvement-card">
+                <div class="improvement-header">
+                    <h3>Grammar</h3>
+                    <span class="priority-badge priority-medium">
+                        Prioridad: Media
+                    </span>
+                </div>
+                <div class="pedagogy-score">
+                    45%
+                </div>
+                <p>Tu nivel de gramática está cerca del promedio, pero todavía hay margen para mejorar. Refuerza las reglas básicas y practica su uso en contexto.</p>
+            </article>
+            
+                </div>
+            </div>
+
+            <div class="balance-card">
+                <h3>Equilibrio entre competencias</h3>
+                <p>Tus resultados están bastante desequilibrados: la lectura es tu punto fuerte (52), mientras que la comprensión auditiva es la más baja (38.5). Hay una diferencia de 13.5 puntos entre tu mejor y tu peor habilidad. Como cada competencia vale el 20 % de la nota final, es importante que trabajes todas, pero dale especial atención a listening y speaking sin descuidar las demás.</p>
+            </div>
+
+            <div class="pedagogy-section">
+                <h3>Propuestas de actividades</h3>
+                <div class="activities-list">
+                    
+            <article class="activity-card">
+                <div class="activity-number">1</div>
+                <div class="activity-content">
+                    <span class="skill-badge">
+                        Listening
+                    </span>
+
+                    <h3>Escucha podcasts o videos cortos en inglés sobre temas que te gusten, con subtítulos en inglés al principio y luego sin ellos.</h3>
+
+                    <div class="activity-field">
+                        <h4>Cómo puedes practicarlo</h4>
+                        <p>1. Elige un podcast o video corto (de 2 a 5 minutos) sobre un tema que te interese. 2. Escúchalo una vez con subtítulos en inglés para identificar palabras clave. 3. Escúchalo de nuevo sin subtítulos y trata de resumir lo que entendiste en voz alta. 4. Repite el mismo audio al día siguiente para fijar lo aprendido.</p>
+                    </div>
+
+                    <div class="activity-objective">
+                        <h4>Objetivo de aprendizaje</h4>
+                        <p>Mejorar tu capacidad para comprender el inglés hablado en contextos cotidianos y reconocer palabras y frases clave sin depender de subtítulos.</p>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="activity-card">
+                <div class="activity-number">2</div>
+                <div class="activity-content">
+                    <span class="skill-badge">
+                        Speaking
+                    </span>
+
+                    <h3>Graba tus propias respuestas a preguntas cotidianas y escucha las grabaciones para detectar errores y mejorar tu pronunciación.</h3>
+
+                    <div class="activity-field">
+                        <h4>Cómo puedes practicarlo</h4>
+                        <p>1. Busca una lista de preguntas sencillas sobre tu día a día (por ejemplo, ¿qué desayunaste?, ¿qué hiciste ayer?). 2. Responde cada pregunta hablando en inglés durante unos 30-60 segundos. 3. Graba tu voz con el móvil o el ordenador. 4. Escucha la grabación y anota qué palabras te costaron más o qué podrías decir mejor. 5. Vuelve a grabar la respuesta aplicando las mejoras.</p>
+                    </div>
+
+                    <div class="activity-objective">
+                        <h4>Objetivo de aprendizaje</h4>
+                        <p>Ganar fluidez y confianza al hablar inglés, y ser más consciente de tu propia pronunciación y errores comunes.</p>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="activity-card">
+                <div class="activity-number">3</div>
+                <div class="activity-content">
+                    <span class="skill-badge">
+                        Grammar
+                    </span>
+
+                    <h3>Practica ejercicios de gramática enfocados en tiempos verbales básicos y estructura de oraciones, aplicándolos luego en frases propias.</h3>
+
+                    <div class="activity-field">
+                        <h4>Cómo puedes practicarlo</h4>
+                        <p>1. Elige un tema gramatical que te cueste (por ejemplo, presente simple vs. presente continuo). 2. Haz ejercicios completando huecos o transformando frases. 3. Escribe cinco oraciones tuyas usando esa regla. 4. Revisa tus oraciones con una guía o con el profesor y corrige los errores.</p>
+                    </div>
+
+                    <div class="activity-objective">
+                        <h4>Objetivo de aprendizaje</h4>
+                        <p>Consolidar el uso correcto de las estructuras gramaticales básicas y aplicarlas con mayor precisión al escribir y hablar.</p>
+                    </div>
+                </div>
+            </article>
+            
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- ==================================================
+             BLOC 4. COMENTARIO DEL PROFESOR
+             ================================================== -->
+
+        <section class="report-section teacher-report-section">
+            <div class="section-header">
+                <h2>Comentario del profesor</h2>
+            </div>
+
+            <div class="teacher-comment-card">
+                <div class="teacher-comment-label">
+                    Valoración del profesor
+                </div>
+
+                <p class="teacher-comment-intro">
+                    Observaciones originales del profesor sobre la evaluación.
+                </p>
+
+                <div class="teacher-comment-text">Júlia, you have been a great student this intensive course, and I would be glad to see you in our school in October to continue learning English. You have definitely learnt a lot, and your exam result is a good evidence of that. You are ready to do next level, which is A2. Jonathan, try to practise a little bit your English during the summer so as not to forget the grammar and vocabulary that we have learnt in intensive course. You can also use the sites that I have shown you, just enjoy learning something new. Jonathan, I wish you nice summer holidays!</div>
+
+                <div class="teacher-signature">
+                    Profesor/a:
+                    <strong>Anna Grace</strong>
+                </div>
+            </div>
+        </section>
+
+
+        <footer class="report-footer">
+            <p class="report-footer-caption">Informe individual de seguimiento académico <span class="footer-separator">|</span> <span class="footer-school-name">Escola Comunica't</span></p>
+            <nav class="contact-footer" aria-label="Contacte de l'escola">
+                <a href="https://www.google.com/maps/search/?api=1&query=Entença%2C%2089%2C%2008015%2C%20Barcelona" target="_blank" rel="noopener noreferrer">📍 Entença, 89, 08015, Barcelona</a>
+                <a href="tel:+34934262479">☎ 934 262 479</a>
+                <a href="https://wa.me/34601302029" target="_blank" rel="noopener noreferrer">💬 601 30 20 29</a>
+                <a href="mailto:info@comunicat.school">✉ info@comunicat.school</a>
+                <a href="https://www.comunicat.school" target="_blank" rel="noopener noreferrer">🌐 www.comunicat.school</a>
+            </nav>
+        </footer>
+
+    </main>
+</body>
+</html>
