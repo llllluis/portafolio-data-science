@@ -1,133 +1,193 @@
-# AI Exam Performance Analyst — versión modularizada (integración v9)
+# AI Exam Performance Analyst — Versión modularizada
 
-Informe HTML de rendimiento académico de inglés con análisis pedagógico
-asistido por LLM (OpenRouter), en català, castellano o inglés.
+> Aplicación en Python que analiza los resultados parciales de un examen de inglés y genera un informe HTML personalizado del rendimiento académico, con interpretación pedagógica asistida por un modelo de lenguaje (LLM) mediante OpenRouter. Los informes pueden generarse en catalán, castellano o inglés.
 
-## Estructura
+---
 
-```
+## 📌 Descripción
+
+El proyecto procesa las cinco competencias del examen —Grammar, Listening, Reading, Speaking y Writing—, analiza los resultados individuales, identifica fortalezas y áreas de mejora y propone actividades de aprendizaje.
+
+La aplicación realiza los cálculos académicos y prepara el perfil del alumno. El LLM se utiliza para elaborar la interpretación pedagógica y las propuestas de actividades. La respuesta del modelo se valida antes de incorporarse al informe.
+
+Esta versión organiza el código en módulos con responsabilidades diferenciadas, en lugar de concentrar el flujo completo en un único archivo. Se desarrolló a partir de la versión monolítica del proyecto, utilizando una herramienta de IA como asistente para reorganizar la aplicación y facilitar su mantenimiento y evolución.
+
+> **Versión monolítica:** [https://github.com/llllluis/portafolio-data-science/tree/main/AI_Exam_Performance_Analyst_monolitico]
+
+---
+
+## ✨ Funcionalidades
+
+1. Lectura y filtrado de datos desde archivos CSV.
+2. Cálculo y análisis de resultados de las cinco competencias.
+3. Preparación del perfil individual del alumno.
+4. Integración con un modelo LLM mediante OpenRouter.
+5. Validación estructural y pedagógica de la respuesta JSON generada por el modelo.
+6. Generación de informes HTML en catalán, castellano o inglés.
+7. Ejecución con o sin análisis mediante IA, utilizando el parámetro `--analisis-ia`.
+8. Configuración del modelo, la nota mínima para aprobar y los recursos visuales mediante variables de entorno.
+9. Pruebas automatizadas con el LLM simulado, sin realizar llamadas reales a la API.
+
+> Las calificaciones y los cálculos académicos los realiza la aplicación; el LLM se utiliza para generar la interpretación pedagógica y las propuestas de actividades.
+
+---
+
+## 🗂️ Estructura del proyecto
+
+```text
 english_report/
-├── main.py                     # Punto de entrada (python main.py ...)
-├── style.css                   # Base corporativa (reconstruida; usa la tuya si la tienes)
+├── main.py
+├── style.css
 ├── requirements.txt
-├── data/                       # CSV de ejemplo con datos ficticios
+├── .env.example
+├── data/
 │   ├── NOTA_PARCIAL_PONDERADA_ALUMN.csv
 │   └── INF_COMENTARIS_ALUMNES_EJERCICO_TIPUS_CURS.csv
-├── reports/                    # Informes HTML generados (informe_<id>_<fecha>_<ca|es|en>.html)
+├── reports/
 ├── tests/
 │   ├── test_model_config.py
-│   └── test_report.py          # Pruebas con LLM simulado (sin llamadas reales)
+│   └── test_report.py
 └── student_report/
-    ├── cli.py                  # Argumentos: --idalumne --data --language --analisis-ia
-    ├── config/                 # settings.py (config + idiomas), prompts.py, translations.py
-    ├── core/                   # data_loader, analysis, extra_info, validation, exceptions
-    ├── llm/                    # client (OpenRouter), prompt_builder
-    ├── reports/                # html_renderer, stylesheet, assets/report.css
-    ├── services/               # pipeline (flujo completo)
-    └── utils/                  # io, ids, html_utils
+    ├── cli.py
+    ├── config/
+    │   ├── settings.py
+    │   ├── prompts.py
+    │   └── translations.py
+    ├── core/
+    ├── llm/
+    ├── reports/
+    ├── services/
+    └── utils/
 ```
 
-## Ejecución
+Los módulos se agrupan por responsabilidad:
 
-```bash
-pip install -r requirements.txt
+| Módulo | Responsabilidad |
+|---|---|
+| `config` | configuración de la aplicación, prompts e idiomas. |
+| `core` | carga de datos, análisis, información adicional, validación y excepciones. |
+| `llm` | cliente de OpenRouter y construcción del prompt. |
+| `reports` | generación del informe HTML y recursos de estilos. |
+| `services` | coordinación del flujo completo de procesamiento. |
+| `utils` | funciones auxiliares para entrada/salida, identificadores y HTML. |
+| `tests` | pruebas automatizadas de configuración y generación de informes. |
 
-# Antes, crea .env a partir de .env.example y configura tu clave API privada.
-# Con análisis IA (por defecto true; requiere OPENROUTER_API_KEY)
-python main.py --idalumne 1701 --data 2026-06-20 --language ca --analisis-ia true
+---
 
-# Sin análisis IA (no se llama al LLM; el informe se genera igual)
-python main.py --idalumne 1701 --data 2026-06-20 --language es --analisis-ia false
-```
+## 🛠️ Tecnologías
 
-- `--language`: código ISO 639-1 (`ca`, `es`, `en`). Se aceptan también
-  `catala`, `castellano`, `english` por compatibilidad.
-- `--analisis-ia`: `true` (por defecto) | `false`.
-- El nombre del fichero usa el código ISO: `informe_1701_2026-06-20_es.html`.
-- Los CSV incluidos contienen datos ficticios. Sustitúyelos por tus propios datos en un entorno privado; no publiques información personal de estudiantes.
+- Python
+- Pandas
+- CSV y JSON
+- API de OpenRouter
+- HTML y CSS
+- `python-dotenv`
+- `pytest`
 
-## Configuración mediante `.env`
+---
 
-**El antiguo `config.py` desaparece**: toda la configuración editable
-vive ahora en el fichero `.env` de la raíz del proyecto (cópialo desde
-`.env.example`), **sin modificar código Python**:
+## ⚙️ Configuración
+
+1. Instala las dependencias:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Crea un archivo `.env` a partir de `.env.example`.
+3. Introduce tu clave privada de OpenRouter en `OPENROUTER_API_KEY`.
+4. Si lo deseas, cambia `MODEL_LLM` para seleccionar otro modelo disponible en OpenRouter.
+5. Ajusta `PASS_MARK`, `LOGO_ESCOLA` y `FOTO_ALUMNE` según tus necesidades.
+
+**Ejemplo de configuración:**
 
 ```dotenv
 # Modelo LLM (OpenRouter)
 MODEL_LLM=nvidia/nemotron-3.5-super-vl:free
 OPENROUTER_API_KEY=YOUR_OPENROUTER_API_KEY
 
-# Académico: umbral de aprobado (una nota igual se considera aprobada).
-# Toda la columna Pass/No pass lo lee de aquí; no hay umbrales fijos en HTML/CSS.
+# Nota mínima para aprobar
 PASS_MARK=50.0
 
-# Recursos visuales propios (rutas de ejemplo)
+# Recursos visuales
 LOGO_ESCOLA=data/logo.png
 FOTO_ALUMNE=data/student_ia/{student_id}.jpg
 ```
 
-- El paquete carga `.env` al arrancar con `python-dotenv` (incluido en
-  `requirements.txt`); las variables ya presentes en el entorno real
-  tienen prioridad sobre el fichero.
-- Valores por defecto si falta una variable: modelo
-  `nvidia/nemotron-3.5-super-vl:free`, `PASS_MARK` `50.0`, logo y foto
-  de Comunica-T.
-- Si `PASS_MARK` no es un número válido, se usa el valor por defecto.
-- La clave API solo es necesaria con `--analisis-ia true`; con
-  `--analisis-ia false` no se lee ningún modelo ni clave.
+La configuración editable se centraliza en `.env`; no es necesario modificar el código Python para cambiar estos valores. El paquete carga el archivo mediante `python-dotenv`. Las variables definidas en el entorno tienen prioridad sobre las del archivo `.env`.
 
-## Resumen de cambios integrados (v9 → modular)
+**Valores por defecto si falta una variable:**
 
-1. **CLI**: `--analisis-ia true|false` (por defecto `true`) y `--language`
-   con códigos ISO 639-1; conversión centralizada en
-   `settings.normalize_language` (sin duplicar mapas).
-   `logo_escola` y `foto_alumne`; `settings.py` lo carga con valores
-   por defecto.
-3. **JSON solo en memoria**: la respuesta del LLM ya no se guarda en
-   disco (sin `informes_json/` ni `.json`); la validación estructural y
-   pedagógica se mantiene íntegra.
-4. **Cabecera**: bloque de marca (logo + `Comunica-T` + `School`),
-   filas de información académica en 3 columnas y fotografía con borde
-   `--highlight-yellow` (mismo color que la tarjeta del resultado final).
-5. **Tarjeta Resultat final**: título localizado, borde amarillo y gráfico
-   circular en azul corporativo.
-6. **Columna `Pass/No pass`** en la tabla de competencias: barra
-   horizontal rojo→amarillo→verde con marcador de la nota real y del
-   umbral (`config.Pass_mark`), etiqueta localizada del umbral y estado
-   `Pass` (verde) / `No pass` (rojo) / "no disponible". Sin marco amarillo
-   alrededor de la columna (requisito explícito).
-7. **Puntos fuertes y aspectos a mejorar**: una sola fila con número de
-   celdas dinámico (`repeat(N, minmax(0, 1fr))`), sin desbordes.
-8. **Pie en dos bandas**: identificación (blanco, `| Escola Comunica't`)
-   y contacto (amarillo) con enlaces reales (Google Maps, `tel:`,
-   WhatsApp, `mailto:`, web).
-9. **Impresión A4 horizontal** (landscape, 10 mm) con reglas de salto
-   de página para tarjetas, tabla y pie.
+- Modelo: `nvidia/nemotron-3.5-super-vl:free`.
+- Nota mínima para aprobar: `50.0`.
+- Logotipo y fotografía: recursos predeterminados de Comunica-T.
 
-## Pruebas ejecutadas
+La clave API solo es necesaria cuando se ejecuta el análisis con IA. Con `--analisis-ia false` no se realiza ninguna llamada al LLM.
 
-`python -m pytest tests -q` (LLM simulado, sin llamadas reales):
+> 🔒 **No publiques el archivo `.env` ni incluyas claves API en GitHub.** El repositorio debe contener únicamente `.env.example` con valores de ejemplo.
 
-- CLI: `--language` ISO + compatibilidad, `--analisis-ia` `true`/`false`
-  (por defecto `true`), valores inválidos rechazados.
-  inferior → `No pass`; superior → `Pass`; sin nota/umbral → estado
-  "no disponible" sin inventar valores.
-- Tres idiomas: textos localizados, `lang` correcto y fichero con código ISO.
-- `--analisis-ia false`: sin llamada al LLM y sin sección de IA; el HTML
-  se genera con los resultados académicos.
-- `--analisis-ia true` (mock): JSON validado (estructura y coherencia
-  pedagógica) y renderizado completo.
-- No se crea ningún fichero `.json` en disco.
-- Filas dinámicas (3 fortalezas / 2 mejoras) y estados vacíos localizados.
-- Bloque de marca, borde amarillo compartido y sin contorno en la columna.
+---
 
-## Limitaciones
+## ▶️ Ejecución
 
-- **No se han llamado al LLM real** (no hay clave API en este entorno);
-  la integración con OpenRouter se mantiene sin cambios y se ha probado
-  con un mock.
-- **No se ha verificado la impresión real ni navegadores**: el CSS de
-  impresión A4 horizontal se ha integrado tal cual de la v9.
-- `style.css` es una **reconstrucción** con los tokens que consume el
-  informe; si conservas tu `style.css` corporativo original, úsalo.
-- Los CSV de `data/` incluidos son **ficticios** y se utilizan únicamente como datos de demostración. No se incluyen fotografías ni informes de alumnos.
+**Con análisis de IA** (requiere una clave válida de OpenRouter):
+
+```bash
+python main.py --idalumne 1701 --data 2026-06-20 --language es --analisis-ia true
+```
+
+**Sin análisis de IA:**
+
+```bash
+python main.py --idalumne 1701 --data 2026-06-20 --language es --analisis-ia false
+```
+
+Idiomas disponibles: `ca` (catalán), `es` (castellano) y `en` (inglés). También se aceptan `catala`, `castellano` y `english` por compatibilidad.
+
+El parámetro `--analisis-ia` acepta `true` o `false` y, si se omite, su valor predeterminado es `true`. Los informes HTML generados se guardan en `reports/` con el código ISO del idioma en el nombre del archivo, por ejemplo: `informe_1701_2026-06-20_es.html`.
+
+La respuesta JSON del LLM se mantiene en memoria y no se guarda como archivo independiente.
+
+---
+
+## 🧪 Pruebas
+
+Las pruebas se ejecutan con:
+
+```bash
+python -m pytest tests -q
+```
+
+La batería de pruebas utiliza un LLM simulado, por lo que no necesita realizar llamadas reales a OpenRouter. Comprueba, entre otros aspectos:
+
+- Argumentos de la CLI, idiomas admitidos y valores de `--analisis-ia`.
+- Configuración del modelo y de la nota mínima para aprobar.
+- Generación de informes en los tres idiomas.
+- Ejecución sin IA y ausencia de llamadas al LLM.
+- Validación y renderizado de la respuesta simulada del LLM.
+- Estados `Pass` y `No pass`, y casos sin nota o umbral disponible.
+- Ausencia de archivos JSON generados en disco.
+- Renderizado de fortalezas, aspectos a mejorar y elementos visuales del informe.
+
+---
+
+## ⚠️ Limitaciones
+
+- No se realizan llamadas al LLM real durante las pruebas automatizadas; la integración con OpenRouter se comprueba mediante un mock.
+- La impresión real y el comportamiento en distintos navegadores no se han verificado exhaustivamente. El CSS de impresión A4 horizontal está integrado en el proyecto.
+- `style.css` es una reconstrucción de los estilos corporativos a partir de los elementos utilizados por el informe. Puede sustituirse por la hoja de estilos corporativa original si se dispone de ella.
+- Los CSV incluidos en el repositorio son datos ficticios de demostración. No publiques información personal de estudiantes ni fotografías reales.
+
+---
+
+## 📊 Estado y alcance
+
+La versión modularizada incluye el análisis de resultados, la validación de la respuesta del LLM, la interpretación pedagógica y la generación de informes HTML. La automatización para generar y enviar informes a todos los alumnos queda fuera del alcance de este proyecto y se plantea como un proyecto independiente.
+
+---
+
+## 🧠 Aprendizajes
+
+Este proyecto permite estudiar cómo evoluciona una aplicación basada en datos e IA desde una estructura monolítica hacia una arquitectura modular. La separación por responsabilidades facilita localizar componentes, mantener el código y desarrollar pruebas específicas, aunque también requiere gestionar imports y dependencias entre módulos.
+
+La IA se ha utilizado como asistente de desarrollo para reorganizar el proyecto. El objetivo ha sido revisar y comprender la estructura resultante, manteniendo la lógica funcional de la aplicación.
