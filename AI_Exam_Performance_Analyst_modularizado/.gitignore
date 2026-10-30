@@ -1,0 +1,20 @@
+# Secretos y configuración local
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Informes generados y datos privados
+reports/*.html
+data/student_ia/
+data/logo.png
+
+# Sistema
+.DS_Store
+Thumbs.db

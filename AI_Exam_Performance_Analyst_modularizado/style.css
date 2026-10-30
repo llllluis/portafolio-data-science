@@ -1,0 +1,119 @@
+/* ==========================================================
+   Base corporativa compartida por la web y el informe.
+
+   ⚠️ Si tu proyecto ya tiene un style.css corporativo propio,
+   conserva el tuyo: este fichero es una reconstrucción con los
+   tokens (variables) que consume el informe (informe.css).
+   ========================================================== */
+
+:root {
+    /* Tipografía */
+    --font-primary: "Poppins", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --font-secondary: "Open Sans", "Segoe UI", Roboto, Arial, sans-serif;
+
+    /* Paleta corporativa */
+    --primary-blue: #6ec1e4;
+    --primary-blue-dark: #1e40af;
+    --accent-green: #43a047;
+    --secondary-yellow-dark: #e0b400;
+    --highlight-yellow: #f4d800;
+
+    --white: #ffffff;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+
+    --card-gradient: linear-gradient(135deg, #f8fbff 0%, #eef6fd 100%);
+
+    /* Radios y sombras */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+    --radius-full: 999px;
+
+    --shadow-md: 0 4px 12px rgba(17, 24, 39, 0.10);
+    --shadow-lg: 0 12px 32px rgba(17, 24, 39, 0.14);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-secondary);
+    color: var(--gray-800);
+    background: var(--gray-50);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-primary);
+    color: var(--gray-900);
+    margin: 0 0 0.5em;
+    line-height: 1.2;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 2px solid var(--gray-200);
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+}
+
+.section-header h2 {
+    margin: 0;
+}
+
+.btn {
+    font: inherit;
+    cursor: pointer;
+    border: none;
+    border-radius: var(--radius-full);
+    padding: 10px 22px;
+    font-weight: 700;
+}
+
+.btn-primary {
+    background: var(--primary-blue);
+    color: var(--gray-900);
+}
+
+.btn-primary:hover {
+    background: var(--primary-blue-dark);
+    color: var(--white);
+}
+
+a {
+    color: var(--primary-blue-dark);
+}
