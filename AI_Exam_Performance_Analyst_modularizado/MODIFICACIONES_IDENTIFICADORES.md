@@ -81,25 +81,3 @@ Nunca se elige un registro arbitrariamente cuando hay duplicados.
 | 5. Duplicado de `MATERIA` | Error controlado indicando `GRAMMAR`, `rc=1` |
 | 6. IA desactivada / activada | Sin LLM: `report` solo con `student_data`. Con LLM (mock): JSON completo y validado. Sin ficheros `.json` |
 | 7. Rutas de CSV desde `.env` | Ejecución real con CSV en `/tmp/e2e/alt`; también probado con `importlib.reload(settings)` |
-
-## 6. Riesgos y aspectos a comprobar
-
-1. **Ruptura de API interna**: `PipelineConfig` ya no acepta `evaluation_date`.
-   Cualquier script propio que lo construya debe pasar `evaluation_id` y
-   `course_id`.
-2. **Nombre de fichero**: cambia el patrón. Si algún proceso recoge
-   `informe_<alumno>_<fecha>_<idioma>.html`, hay que actualizar el patrón.
-3. **`IDCURS`**: se acepta numérico o alfanumérico. La comparación se hace
-   normalizada como texto, así que `7`, `7.0` y `"7"` son equivalentes.
-4. **`DATA` mixta** dentro de una misma combinación ahora es un error (antes
-   el filtro por fecha lo ocultaba). Es intencionado.
-5. **`OUTPUT_DIR` y `BASE_CSS_PATH` siguen siendo relativos al directorio de
-   trabajo** (comportamiento original). Los CSV ya no dependen del CWD, pero
-   conviene ejecutar desde la raíz del proyecto.
-6. **Mensajes**: toda la salida de consola, los errores y el `--help`
-   están unificados en castellano (incluidos los mensajes internos de
-   argparse: argumentos obligatorios, argumentos no reconocidos, opciones
-   y valores no válidos). Los textos del informe HTML NO cambian: siguen
-   traduciéndose a `ca` / `es` / `en` según `--language`.
-7. `python-dotenv` debe estar instalado (`requirements.txt` lo incluye); si no
-   está, el `.env` se ignora silenciosamente y se usan los valores por defecto.
