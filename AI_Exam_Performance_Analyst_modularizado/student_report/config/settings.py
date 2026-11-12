@@ -19,8 +19,16 @@ from pathlib import Path
 from typing import Any, Final
 
 __all__ = [
+    "PROJECT_ROOT",
     "RESULTS_CSV_PATH",
+    "RESULTS_CSV_ENV",
+    "DEFAULT_RESULTS_CSV_PATH",
     "EXTRA_INFO_CSV_PATH",
+    "EXTRA_INFO_CSV_ENV",
+    "DEFAULT_EXTRA_INFO_CSV_PATH",
+    "resolve_project_path",
+    "get_csv_path",
+    "REQUIRED_RESULTS_COLUMNS",
     "OUTPUT_DIR",
     "BASE_CSS_PATH",
     "REPORT_CSS_FILENAME",
@@ -79,11 +87,50 @@ def _load_env_file() -> None:
 _load_env_file()
 
 # ------------------------------------------------------------------
-# Rutas (relativas al directorio de trabajo, como en el original)
+# Rutas del proyecto
 # ------------------------------------------------------------------
-RESULTS_CSV_PATH: Final[str] = "data/NOTA_PARCIAL_PONDERADA_ALUMN.csv"
-EXTRA_INFO_CSV_PATH: Final[str] = (
+# Raíz del proyecto: la carpeta que contiene main.py y el .env. Se
+# calcula desde la ubicación de este módulo (settings.py -> config ->
+# student_report -> raíz) y NO desde el directorio de trabajo actual,
+# de modo que las rutas relativas funcionan aunque Python se lance
+# desde otra carpeta.
+PROJECT_ROOT: Final[Path] = Path(__file__).resolve().parents[2]
+
+# ------------------------------------------------------------------
+# CSV de origen configurables mediante .env
+# ------------------------------------------------------------------
+RESULTS_CSV_ENV: Final[str] = "RESULTS_CSV_PATH"
+EXTRA_INFO_CSV_ENV: Final[str] = "EXTRA_INFO_CSV_PATH"
+DEFAULT_RESULTS_CSV_PATH: Final[str] = "data/NOTA_PARCIAL_PONDERADA_ALUMN.csv"
+DEFAULT_EXTRA_INFO_CSV_PATH: Final[str] = (
     "data/INF_COMENTARIS_ALUMNES_EJERCICO_TIPUS_CURS.csv"
+)
+
+
+def resolve_project_path(value: str | Path) -> Path:
+    """Resuelve una ruta de datos del proyecto.
+
+    - Las rutas absolutas se respetan tal cual.
+    - Las relativas se resuelven respecto a :data:`PROJECT_ROOT`, nunca
+      respecto al directorio de trabajo actual.
+    """
+    path = Path(str(value)).expanduser()
+    if not path.is_absolute():
+        path = PROJECT_ROOT / path
+    return path.resolve()
+
+
+def get_csv_path(env_name: str, default: str) -> Path:
+    """Ruta de un CSV leída del entorno (``.env``) o su valor por defecto."""
+    raw = os.getenv(env_name, "").strip()
+    return resolve_project_path(raw or default)
+
+
+RESULTS_CSV_PATH: Final[Path] = get_csv_path(
+    RESULTS_CSV_ENV, DEFAULT_RESULTS_CSV_PATH
+)
+EXTRA_INFO_CSV_PATH: Final[Path] = get_csv_path(
+    EXTRA_INFO_CSV_ENV, DEFAULT_EXTRA_INFO_CSV_PATH
 )
 OUTPUT_DIR: Final[str] = "reports"
 BASE_CSS_PATH: Final[str] = "style.css"
@@ -123,6 +170,17 @@ ANALYSIS_COLUMNS: Final[tuple[str, ...]] = (
     "RANG",
 )
 
+# Columnas mínimas que debe tener el CSV de resultados para poder
+# localizar un registro y construir el análisis.
+REQUIRED_RESULTS_COLUMNS: Final[tuple[str, ...]] = (
+    "IDALUMNE",
+    "DATA",
+    "IDEVALUACIO",
+    "IDCURS",
+    "MATERIA",
+    "PERCENTATGE",
+)
+
 EXTRA_INFO_COLUMNS: Final[tuple[str, ...]] = (
     "IDALUMNE",
     "IDEVALUACIO",
@@ -141,7 +199,8 @@ EXTRA_INFO_COLUMNS: Final[tuple[str, ...]] = (
 # Idiomas internos del paquete (nombres usados en el prompt del LLM,
 # en las traducciones y en la validación).
 SUPPORTED_LANGUAGES: Final[tuple[str, ...]] = ("catala", "castellano", "english")
-DEFAULT_LANGUAGE: Final[str] = "catala"
+# Idioma interno por defecto cuando no se indica --language.
+DEFAULT_LANGUAGE: Final[str] = "english"
 
 # Conversión centralizada código ISO 639-1 -> idioma interno.
 # El CLI acepta los códigos ISO (ca, es, en) y el resto del paquete
@@ -160,7 +219,7 @@ INTERNAL_LANGUAGE_CODES: Final[dict[str, str]] = {
 
 # Alias de compatibilidad con la nomenclatura anterior del paquete.
 LANGUAGE_CODES_INTERNAL: Final[dict[str, str]] = INTERNAL_LANGUAGE_CODES
-DEFAULT_LANGUAGE_CODE: Final[str] = "ca"
+DEFAULT_LANGUAGE_CODE: Final[str] = "en"
 
 
 def normalize_language(value: str) -> str:
@@ -180,12 +239,12 @@ DEFAULT_PASS_MARK: Final[float] = 50.0
 
 # Logotipo del bloque de marca de la cabecera del informe.
 LOGO_ESCOLA_ENV: Final[str] = "LOGO_ESCOLA"
-DEFAULT_SCHOOL_LOGO_URL: Final[str] = "..\data\logo.png"
+DEFAULT_SCHOOL_LOGO_URL: Final[str] = r"..\data\logo.png"
 
 # Plantilla de la fotografía del alumno (formato original: 0 + IDALUMNE).
 FOTO_ALUMNE_ENV: Final[str] = "FOTO_ALUMNE"
 DEFAULT_STUDENT_PHOTO_URL_TEMPLATE: Final[str] = (
-    "..\data\student_ia\{student_id}.jpg"
+    r"..\data\student_ia\{student_id}.jpg"
 )
 
 

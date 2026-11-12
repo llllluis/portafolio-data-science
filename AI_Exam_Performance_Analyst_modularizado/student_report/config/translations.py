@@ -168,7 +168,7 @@ def get_ui_texts(language: str) -> dict[str, str]:
     """
     if language not in UI_TEXTS:
         raise ValueError(
-            f"Idioma no vàlid: {language}. "
-            "Utilitza catala, castellano o english."
+            f"Idioma no válido: {language}. "
+            "Usa catala, castellano o english."
         )
     return UI_TEXTS[language]

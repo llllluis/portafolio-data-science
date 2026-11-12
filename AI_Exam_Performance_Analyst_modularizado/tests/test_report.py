@@ -37,6 +37,8 @@ from student_report.services.pipeline import (  # noqa: E402
 )
 
 DATE = "2026-06-20"
+EVALUATION_ID = 101
+COURSE_ID = 7
 
 
 # ------------------------------------------------------------------
@@ -107,7 +109,8 @@ def make_config(
 ) -> PipelineConfig:
     return PipelineConfig(
         student_id=student_id,
-        evaluation_date=DATE,
+        evaluation_id=EVALUATION_ID,
+        course_id=COURSE_ID,
         language=normalize_language(language),
         ai_analysis=ai_analysis,
         results_csv=PROJECT_ROOT / "data" / "NOTA_PARCIAL_PONDERADA_ALUMN.csv",
@@ -132,17 +135,19 @@ def tmp_reports(tmp_path: Path) -> Path:
 
 def test_cli_accepts_iso_language_and_analisis_ia() -> None:
     config = parse_args(
-        ["--idalumne", "1701", "--data", DATE,
+        ["--idalumne", "1701", "--idevaluacio", "101", "--idcurs", "7",
          "--language", "es", "--analisis-ia", "false"]
     )
     assert config.student_id == 1701
-    assert config.evaluation_date == DATE
+    assert config.evaluation_id == 101
+    assert config.course_id == 7
     assert config.language == "castellano"
     assert config.ai_analysis is False
 
 
 def test_cli_analisis_ia_defaults_to_true() -> None:
-    config = parse_args(["--idalumne", "1701", "--data", DATE, "--language", "ca"])
+    config = parse_args(["--idalumne", "1701", "--idevaluacio", "101",
+                         "--idcurs", "7", "--language", "ca"])
     assert config.ai_analysis is True
 
 

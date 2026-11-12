@@ -35,13 +35,18 @@ def load_extra_info(path: str | Path = EXTRA_INFO_CSV_PATH) -> pd.DataFrame:
         FileNotFoundError: si no existe el fichero.
         ExtraInfoError: si faltan columnas obligatorias.
     """
-    ensure_file_exists(path, "No s'ha trobat el fitxer complementari: {path}")
+    ensure_file_exists(
+        path,
+        "No se encuentra el CSV complementario en: {path}. "
+        "Revisa la variable EXTRA_INFO_CSV_PATH del .env.",
+    )
     df = read_semicolon_csv(path)
 
     missing = [c for c in EXTRA_INFO_COLUMNS if c not in df.columns]
     if missing:
         raise ExtraInfoError(
-            f"Falten columnes al fitxer complementari: {missing}"
+            "Faltan columnas obligatorias en el CSV complementario "
+            f"(EXTRA_INFO_CSV_PATH): {', '.join(missing)}."
         )
     return df[list(EXTRA_INFO_COLUMNS)].copy()
 
@@ -56,16 +61,18 @@ def _check_keys(df_extra: pd.DataFrame) -> None:
     """Verifica que las claves del complementario no estén vacías ni duplicadas."""
     if df_extra[_MERGE_KEYS].isna().any().any():
         raise ExtraInfoError(
-            "Hi ha identificadors buits al fitxer complementari."
+            "Hay identificadores vacíos en el CSV complementario "
+            "(IDALUMNE, IDEVALUACIO o IDCURS)."
         )
     if df_extra[_MERGE_KEYS].eq("").any().any():  # type: ignore[arg-type]
         raise ExtraInfoError(
-            "Hi ha identificadors buits al fitxer complementari."
+            "Hay identificadores vacíos en el CSV complementario "
+            "(IDALUMNE, IDEVALUACIO o IDCURS)."
         )
     if df_extra.duplicated(_MERGE_KEYS).any():
         raise ExtraInfoError(
-            "Hi ha combinacions duplicades d'IDALUMNE, "
-            "IDEVALUACIO i IDCURS al fitxer complementari."
+            "Hay combinaciones duplicadas de IDALUMNE, IDEVALUACIO e "
+            "IDCURS en el CSV complementario."
         )
 
 
@@ -98,12 +105,18 @@ def merge_extra_info(
 
 
 def build_report_context(
-    df_final: pd.DataFrame, student_id: str, evaluation_id: int
+    df_final: pd.DataFrame,
+    student_id: Any,
+    evaluation_id: Any,
+    course_id: Any,
 ) -> dict[str, Any]:
     """Extrae los datos de cabecera del informe HTML para el alumno.
 
+    La fila se localiza por los mismos tres identificadores que el
+    resto del pipeline: ``IDALUMNE + IDEVALUACIO + IDCURS``.
+
     Raises:
-        ExtraInfoError: si no se encuentra la fila del alumno/evaluación.
+        ExtraInfoError: si no hay fila o hay más de una para esa clave.
     """
     row = df_final[
         (normalize_id(df_final["IDALUMNE"]) == normalize_scalar_id(student_id))
@@ -111,11 +124,19 @@ def build_report_context(
             normalize_id(df_final["IDEVALUACIO"])
             == normalize_scalar_id(evaluation_id)
         )
+        & (normalize_id(df_final["IDCURS"]) == normalize_scalar_id(course_id))
     ]
     if row.empty:
         raise ExtraInfoError(
-            "No s'han trobat les dades de l'alumne i l'avaluació "
-            "a df_informe_final."
+            "No se han encontrado los datos complementarios para "
+            f"IDALUMNE={student_id}, IDEVALUACIO={evaluation_id}, "
+            f"IDCURS={course_id}."
+        )
+    if len(row) > 1:
+        raise ExtraInfoError(
+            "Hay varios registros complementarios para "
+            f"IDALUMNE={student_id}, IDEVALUACIO={evaluation_id}, "
+            f"IDCURS={course_id}."
         )
     first = row.iloc[0]
     return {key: first[column] for key, column in _CONTEXT_FIELDS.items()}

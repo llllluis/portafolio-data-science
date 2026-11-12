@@ -27,11 +27,11 @@ _REQUIRED_KEYS: frozenset[str] = frozenset(
 )
 # (clave, tipo esperado, mensaje de error)
 _TYPE_RULES: tuple[tuple[str, type, str], ...] = (
-    ("student_data", dict, "'student_data' ha de ser un objecte."),
-    ("strengths", list, "'strengths' ha de ser una llista."),
-    ("areas_to_improve", list, "'areas_to_improve' ha de ser una llista."),
-    ("skills_balance", str, "'skills_balance' ha de ser text."),
-    ("proposed_activities", list, "'proposed_activities' ha de ser una llista."),
+    ("student_data", dict, "'student_data' debe ser un objeto."),
+    ("strengths", list, "'strengths' debe ser una lista."),
+    ("areas_to_improve", list, "'areas_to_improve' debe ser una lista."),
+    ("skills_balance", str, "'skills_balance' debe ser texto."),
+    ("proposed_activities", list, "'proposed_activities' debe ser una lista."),
 )
 _EXACT_FIELDS: tuple[str, ...] = (
     "student_id",
@@ -55,11 +55,11 @@ def validate_report_structure(report: Any) -> None:
         ReportValidationError: al primer incumplimiento detectado.
     """
     if not isinstance(report, dict):
-        raise ReportValidationError("L'informe no és un objecte JSON.")
+        raise ReportValidationError("El informe no es un objeto JSON.")
 
     missing = set(_REQUIRED_KEYS) - set(report.keys())
     if missing:
-        raise ReportValidationError(f"Falten claus obligatòries: {missing}")
+        raise ReportValidationError(f"Faltan claves obligatorias: {missing}")
 
     for key, expected_type, message in _TYPE_RULES:
         if not isinstance(report[key], expected_type):
@@ -72,14 +72,14 @@ def _check_student_data(returned: dict[str, Any], profile: dict[str, Any]) -> No
         if returned.get(field) != profile.get(field):
             raise ReportValidationError(
                 f"Error en student_data: el camp '{field}' "
-                "no coincideix amb el perfil original."
+                "no coincide con el perfil original."
             )
 
     for field in _NUMERIC_FIELDS:
         if not _close(profile[field], returned[field]):
             raise ReportValidationError(
                 f"Error en student_data: el camp '{field}' "
-                "no coincideix amb el perfil original."
+                "no coincide con el perfil original."
             )
 
     for skill, original_score in profile["skills"].items():
@@ -87,7 +87,7 @@ def _check_student_data(returned: dict[str, Any], profile: dict[str, Any]) -> No
         if returned_score is None or not _close(original_score, returned_score):
             raise ReportValidationError(
                 f"Error: la nota de '{skill}' "
-                "no coincideix amb el perfil original."
+                "no coincide con el perfil original."
             )
 
 
@@ -98,13 +98,13 @@ def _check_skill_and_score(
     skill = item["skill"]
     if skill not in _VALID_SKILLS:
         raise ReportValidationError(
-            f"Competència no vàlida a {section}: {skill}"
+            f"Competencia no válida en {section}: {skill}"
         )
     real_score = float(scores[skill])
     if not math.isclose(real_score, float(item["score"]), abs_tol=SCORE_TOLERANCE):
         raise ReportValidationError(
             f"La nota de '{skill}' a {section} "
-            "no coincideix amb les dades originals."
+            "no coincide con los datos originales."
         )
     return real_score
 
@@ -131,8 +131,8 @@ def validate_pedagogical_coherence(
         real = _check_skill_and_score(strength, scores, "strengths")
         if real < average:
             warnings.append(
-                f"Revisa si '{strength['skill']}' és realment una fortalesa: "
-                f"la seva nota ({real}) és inferior "
+                f"Revisa si '{strength['skill']}' es realmente una fortaleza: "
+                f"su nota ({real}) es inferior "
                 f"a la mitjana ({average})."
             )
 
@@ -141,19 +141,19 @@ def validate_pedagogical_coherence(
         real = _check_skill_and_score(area, scores, "areas_to_improve")
         if area["priority"] not in VALID_PRIORITIES:
             raise ReportValidationError(
-                f"Prioritat no vàlida per a '{skill}': {area['priority']}"
+                f"Prioridad no válida para '{skill}': {area['priority']}"
             )
         if real >= average:
             warnings.append(
-                f"Revisa si cal reforçar '{skill}': "
-                f"la seva nota ({real}) no és inferior "
+                f"Revisa si hay que reforzar '{skill}': "
+                f"su nota ({real}) no es inferior "
                 f"a la mitjana ({average})."
             )
 
     activities = report["proposed_activities"]
     if not MIN_ACTIVITIES <= len(activities) <= MAX_ACTIVITIES:
         raise ReportValidationError(
-            "L'informe ha de contenir entre 2 i 4 activitats."
+            "El informe debe contener entre 2 y 4 actividades."
         )
 
     improvement_skills = {area["skill"] for area in report["areas_to_improve"]}
@@ -161,13 +161,13 @@ def validate_pedagogical_coherence(
         skill = activity["skill"]
         if skill not in _VALID_SKILLS:
             raise ReportValidationError(
-                f"Competència no vàlida en una activitat: {skill}"
+                f"Competencia no válida en una actividad: {skill}"
             )
         if skill not in improvement_skills:
             warnings.append(
-                f"L'activitat sobre '{skill}' no està associada "
-                "a cap competència de areas_to_improve. "
-                "Revisa si la proposta està justificada."
+                f"L'activitat sobre '{skill}' no está asociada "
+                "a ninguna competencia de areas_to_improve. "
+                "Revisa si la propuesta está justificada."
             )
 
     return warnings

@@ -9,6 +9,8 @@ from __future__ import annotations
 __all__ = [
     "StudentReportError",
     "NoRecordsFoundError",
+    "MultipleRecordsFoundError",
+    "DataValidationError",
     "ReportValidationError",
     "ExtraInfoError",
     "LLMReportError",
@@ -21,6 +23,14 @@ class StudentReportError(Exception):
 
 class NoRecordsFoundError(StudentReportError, LookupError):
     """No hay registros para el alumno y la fecha indicados."""
+
+
+class MultipleRecordsFoundError(StudentReportError, ValueError):
+    """Hay más de un registro para la misma clave de búsqueda."""
+
+
+class DataValidationError(StudentReportError, ValueError):
+    """Los CSV de origen no tienen el contenido o el formato esperados."""
 
 
 class ReportValidationError(StudentReportError, ValueError):

@@ -47,7 +47,12 @@ from student_report.reports.stylesheet import build_stylesheet
 from student_report.utils.html_utils import clamp_score, format_score
 from student_report.utils.html_utils import escape_html as esc
 
-__all__ = ["render_report_html", "write_html_report", "exam_state"]
+__all__ = [
+    "render_report_html",
+    "save_rendered_html",
+    "write_html_report",
+    "exam_state",
+]
 
 # Prioridad del LLM -> (clave de traducción, clase CSS)
 _PRIORITIES: dict[str, tuple[str, str]] = {
@@ -699,6 +704,58 @@ def render_report_html(
 """
 
 
+def _filename_part(value: Any) -> str:
+    """Convierte un identificador en un fragmento válido de nombre de fichero."""
+    text = str(value).strip()
+    for char in ("/", "\\", ":", " ", "\t"):
+        text = text.replace(char, "-")
+    return text
+
+
+def save_rendered_html(
+    document: str,
+    report: Mapping[str, Any],
+    language: str,
+    output_dir: str | Path = OUTPUT_DIR,
+    base_css_path: str | Path = BASE_CSS_PATH,
+    evaluation_id: int | str | None = None,
+    course_id: int | str | None = None,
+) -> Path:
+    """Guarda un documento HTML previamente generado.
+
+    Si se indican ``evaluation_id`` y ``course_id``, se añaden al nombre
+    del fichero para que dos informes del mismo alumno y la misma fecha
+    (cursos distintos) no se sobrescriban:
+    ``informe_<alumno>_<fecha>_<evaluación>_<curso>_<idioma>.html``.
+    """
+
+    folder = Path(output_dir)
+    folder.mkdir(parents=True, exist_ok=True)
+
+    build_stylesheet(base_css_path, folder)
+
+    data = report["student_data"]
+    language_code = INTERNAL_LANGUAGE_CODES.get(language, language)
+
+    parts = [
+        "informe",
+        _filename_part(data["student_id"]),
+        _filename_part(data["evaluation_date"]),
+    ]
+    if evaluation_id is not None:
+        parts.append(_filename_part(evaluation_id))
+    if course_id is not None:
+        parts.append(_filename_part(course_id))
+    parts.append(str(language_code))
+
+    filename = "_".join(parts) + ".html"
+
+    html_path = folder / filename
+    html_path.write_text(document, encoding="utf-8")
+
+    return html_path
+
+
 def write_html_report(
     report: Mapping[str, Any],
     language: str,
@@ -706,32 +763,21 @@ def write_html_report(
     output_dir: str | Path = OUTPUT_DIR,
     base_css_path: str | Path = BASE_CSS_PATH,
     include_ai_analysis: bool = True,
+    evaluation_id: int | str | None = None,
+    course_id: int | str | None = None,
 ) -> Path:
-    """Genera el HTML, escribe ``informe.css`` y guarda el informe.
+    """Genera el HTML, escribe el CSS y guarda el informe."""
 
-    Nombre del fichero: ``informe_<id>_<fecha>_<ISO 639-1>.html``.
-
-    Returns:
-        Ruta del HTML generado.
-
-    Raises:
-        ValueError: idioma no soportado.
-        FileNotFoundError: no existe la hoja de estilos corporativa.
-    """
     document = render_report_html(
         report, language, extra_info, include_ai_analysis
     )
 
-    folder = Path(output_dir)
-    folder.mkdir(parents=True, exist_ok=True)
-    build_stylesheet(base_css_path, folder)
-
-    data = report["student_data"]
-    language_code = INTERNAL_LANGUAGE_CODES.get(language, language)
-    filename = (
-        f"informe_{esc(data['student_id'])}_"
-        f"{esc(data['evaluation_date'])}_{language_code}.html"
+    return save_rendered_html(
+        document=document,
+        report=report,
+        language=language,
+        output_dir=output_dir,
+        base_css_path=base_css_path,
+        evaluation_id=evaluation_id,
+        course_id=course_id,
     )
-    html_path = folder / filename
-    html_path.write_text(document, encoding="utf-8")
-    return html_path

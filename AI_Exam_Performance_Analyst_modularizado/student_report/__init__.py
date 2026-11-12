@@ -9,8 +9,9 @@ API pública de alto nivel::
 
     from student_report import PipelineConfig, run_pipeline
 
-    result = run_pipeline(PipelineConfig(student_id=1690,
-                                         evaluation_date="2026-06-20",
+    result = run_pipeline(PipelineConfig(student_id=1701,
+                                         evaluation_id=101,
+                                         course_id=7,
                                          language="castellano"))
     print(result.html_path)
 """

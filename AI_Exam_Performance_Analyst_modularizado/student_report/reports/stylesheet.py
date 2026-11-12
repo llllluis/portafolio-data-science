@@ -23,9 +23,9 @@ def build_stylesheet(base_css_path: str | Path, output_dir: Path) -> Path:
     source = Path(base_css_path)
     if not source.is_file():
         raise FileNotFoundError(
-            f"No s'ha trobat la fulla d'estils: {source}. "
-            "Desa style.css al directori del projecte o indica "
-            "la ruta correcta amb el paràmetre ruta_css."
+            f"No se ha encontrado la hoja de estilos: {source}. "
+            "Guarda style.css en el directorio del proyecto o indica "
+            "la ruta correcta con el parámetro ruta_css."
         )
     base_css = source.read_text(encoding="utf-8")
     target = output_dir / REPORT_CSS_FILENAME

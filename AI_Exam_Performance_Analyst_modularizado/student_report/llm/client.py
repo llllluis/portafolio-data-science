@@ -67,5 +67,5 @@ class OpenRouterClient:
         )
         content = completion.choices[0].message.content
         if not content:
-            raise ValueError("El model no ha retornat cap resposta.")
+            raise ValueError("El modelo no ha devuelto ninguna respuesta.")
         return content
